@@ -1,4 +1,4 @@
-package Interfaces;
+package InterfacesAbstracts;
 
 import java.io.IOException;
 

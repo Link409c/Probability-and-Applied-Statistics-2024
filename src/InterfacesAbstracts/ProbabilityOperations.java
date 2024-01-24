@@ -1,4 +1,4 @@
-package Interfaces;
+package InterfacesAbstracts;
 
 /**
  * The ProbabilityOperations interface is a generics interface that should be used
@@ -35,4 +35,7 @@ public interface ProbabilityOperations<E> {
     E calcMode(E aList);
     E calcMedian(E aList);
     E calcStandardDev(E aList);
+
+    //method to calculate compliment of a list of objects
+    E compliment(E universalSet, E aList);
 }

@@ -1,0 +1,20 @@
+Interesting rule on the pokemon TCG: you need a pokemon in your opening hand.
+Otherwise your opponent gets a free card and you have to reshuffle your deck.
+From a hand of 7 cards, and a deck of 60 cards.
+Experimenting with drawing hands:
+1 Pokemon and 59 energy
+What's the probability of drawing the pokemon?
+
+Program:
+Make the Card Class
+Give it an attribute: Energy or Pokemon
+Make the Pokemon Draw Program
+It has a Deck of the Card Objects
+Populate it with one Pokemon and all other energy
+Draw a hand some number of times (100000)
+Wrap this in a loop increasing the number of pokemon and decreasing the energy
+    1->2 Pokemon, 59->58 Energy etc
+    Loop 60 times.
+    Plot the results in excel.
+Use the program to determine the optimal ratios of pokemon to energy to always draw a pokemon
+in your opening hand.
