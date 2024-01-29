@@ -1,13 +1,17 @@
 package InterfacesAbstracts;
 
 /**
- * Abstract class representing some kind of trading card.
+ * A class representing some kind of trading card.
  */
-public abstract class TradingCard {
+public class TradingCard {
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
 
     private String cardName;
-    private int cardHP;
-    private int attackPoints;
-    private int defensePoints;
-
 }
