@@ -15,7 +15,7 @@ public interface FileAble {
      * Assume the method throws an IOException due to the use of fileReader or BufferedReader.
      * @return a message informing the user if the file was created.
      */
-    String exportObjects(String filePath, String header) throws IOException;
+    String exportObjects(String filePath) throws IOException;
     //create string to return
     //create the csv file
     //create the string filepath, specifying a directory path
