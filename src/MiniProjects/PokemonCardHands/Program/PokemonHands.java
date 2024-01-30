@@ -1,7 +1,11 @@
-package MiniProjects.PokemonCardHands;
+package MiniProjects.PokemonCardHands.Program;
 
 import InterfacesAbstracts.DeckAnalyzer;
 import InterfacesAbstracts.FileAble;
+import InterfacesAbstracts.TradingCard;
+import MiniProjects.PokemonCardHands.Structures.Energy;
+import MiniProjects.PokemonCardHands.Structures.Pokemon;
+import MiniProjects.PokemonCardHands.Structures.PokemonCard;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +33,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         //make the deck starting with one pokemon
         //run a number of trials to get hand results
         //calculate the chance of success
+        //num of hands w/ pokemon over num trials
         //repeat until the chance of success is as close to 100% as possible
         //export the results of the tests
         //return a success message with the filepath
@@ -41,13 +46,22 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
     @Override
     public void makeDeck(int cardCount) {
         //make a new Deck Object
+        Stack<PokemonCard> newDeck = new Stack<>();
         //for the card count,
+        for(int i = 0; i < cardCount; i++) {
             //make a Pokemon card
             //add it to the deck
+            newDeck.add(new Pokemon());
+        }
         //subtract cardCount from Full Deck Count
+        int energyCount = FULL_DECK_COUNT - cardCount;
         //for that amount,
+        for(int i = 0; i < energyCount; i++) {
             //add energy cards to the deck
+            newDeck.add(new Energy());
+        }
         //set the populated Deck Object as the global
+        setDeck(newDeck);
     }
 
     /**
@@ -93,10 +107,15 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
     @Override
     public void drawHand(int handSize) {
         //make a new hand object
+        ArrayList<PokemonCard> newHand = new ArrayList<>();
         //for the hand size,
+        for(int i = 0; i < handSize; i++) {
             //pop the top object in the deck
             //add it to the hand
+            newHand.add(getDeck().pop());
+        }
         //set the hand as the global
+        setTheHand(newHand);
     }
 
     /**
@@ -104,7 +123,8 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      */
     @Override
     public void evaluateHand() {
-
+        //does the hand contain the desired number of pokemon?
+        //return true or false?
     }
 
     /**
