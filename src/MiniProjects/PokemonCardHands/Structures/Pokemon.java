@@ -1,14 +1,21 @@
-package MiniProjects.PokemonCardHands;
+package MiniProjects.PokemonCardHands.Structures;
 
-import InterfacesAbstracts.TradingCard;
+/**
+ * Subclass of the PokemonCard object. Designed to represent a Pokemon.
+ */
+public class Pokemon extends PokemonCard {
 
-public class PokemonCard extends TradingCard {
-
-    public PokemonCard(String aName, int anHP){
+    public Pokemon(){
+        setCardName("Zangoose");
+        setHp(90);
+        setResistance("Poison");
+        setWeakness("Fighting");
+    }
+    public Pokemon(String aName, int anHP, String aWeakness, String aResistance){
         setCardName(aName);
         setHp(anHP);
-        setWeakness("None");
-        setResistance("None");
+        setWeakness(aWeakness);
+        setResistance(aResistance);
     }
 
     public int getHp() {
