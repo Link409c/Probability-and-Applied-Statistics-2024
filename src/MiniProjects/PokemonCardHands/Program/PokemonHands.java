@@ -70,7 +70,8 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         String fileName = "PokemonHandsResults";
         //get local date and time to add to file name
         String theDate = new ChronoLocalDate().toString();
-        fileName = fileName.concat()
+        fileName = fileName.concat();
+        //add the filepath
         //return a success message with the filepath
         return exportObjects(testResults, theFilePath);
     }
