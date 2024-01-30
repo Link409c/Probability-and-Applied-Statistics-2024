@@ -2,12 +2,14 @@ package MiniProjects.PokemonCardHands.Program;
 
 import InterfacesAbstracts.DeckAnalyzer;
 import InterfacesAbstracts.FileAble;
-import InterfacesAbstracts.TradingCard;
 import MiniProjects.PokemonCardHands.Structures.Energy;
+import MiniProjects.PokemonCardHands.Structures.HandResult;
 import MiniProjects.PokemonCardHands.Structures.Pokemon;
 import MiniProjects.PokemonCardHands.Structures.PokemonCard;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -24,20 +26,53 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      * Runs the program, testing a number of hands to evaluate and calculate the
      * optimal number of Pokemon Cards to add to the deck in order to see, at minimum,
      * the specified number of Pokemon in the hand every time.
-     * @param numPokemon the amount of Pokemon the user desires to see at minimum in a hand
-     *                   every time they play a game of Pokemon.
+     * @param numTrials the amount of hands to draw for each ratio of Pokemon in the deck.
      * @return a message informing the user the program has completed and the filepath of
      * the results file.
      */
-    public String runProgram(int numPokemon){
+    public String runProgram(int numTrials){
+        //start with one pokemon
+        int pokemonCount = 1;
+        //initial probability of success
+        double successRate = 0;
+        //tracking successes in each trial run
+        int successes = 0;
+        //structure to hold test results
+        ArrayList<HandResult> testResults = new ArrayList<>();
         //make the deck starting with one pokemon
-        //run a number of trials to get hand results
-        //calculate the chance of success
-        //num of hands w/ pokemon over num trials
-        //repeat until the chance of success is as close to 100% as possible
+        makeDeck(pokemonCount);
+        while(pokemonCount <= FULL_DECK_COUNT || successRate < 1.0) {
+            shuffleDeck();
+            //run a number of trials to get hand results
+            for(int i = 0; i < numTrials; i++){
+                //draw a hand
+                drawHand(getHandSize());
+                //evaluate
+                if(evaluateHand()){
+                    successes++;
+                }
+                //add the result to the test results
+                testResults.add(new HandResult(i, getTheHand()));
+                //reset the deck
+                for(PokemonCard c : getTheHand()){
+                    getDeck().add(c);
+                }
+                shuffleDeck();
+            }
+            //calculate the chance of success
+            //num of hands w/ pokemon over num trials
+            successRate = (double) successes / numTrials;
+            //repeat until the chance of success is as close to 100% as possible
+            pokemonCount++;
+            makeDeck(pokemonCount);
+        }
         //export the results of the tests
+        String fileName = "PokemonHandsResults";
+        //get local date and time to add to file name
+        String theDate = new ChronoLocalDate().toString();
+        fileName = fileName.concat()
         //return a success message with the filepath
-        return "";
+        return exportObjects(testResults, theFilePath);
     }
     /**
      * Populates the global Deck structure with Energy and Pokemon Cards.
@@ -122,9 +157,17 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      * Evaluate the current hand of Pokemon Cards.
      */
     @Override
-    public void evaluateHand() {
-        //does the hand contain the desired number of pokemon?
-        //return true or false?
+    public boolean evaluateHand() {
+        //get the hand
+        //check each card
+        for(PokemonCard p : getTheHand()) {
+            //if there is a pokemon, return true
+            if(p.getClass() == Pokemon.class){
+                return true;
+            }
+        }
+        //else return false
+        return false;
     }
 
     /**
@@ -144,7 +187,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      * @param filePath the desired path to create the file
      * @return a message informing the user if the export was successful.
      */
-    public String exportObjects(String filePath){
+    public String exportObjects(ArrayList<HandResult> theResults, String filePath){
         //different ways to approach exporting results
         //can give each hand with cards
         //can give condensed results
@@ -152,6 +195,8 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         //can give optimized results
             //aka "Run x pokemon to see one every time"
         //can export a mix of these outputs
+
+
         return "";
     }
 
@@ -159,8 +204,9 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         //take the fileName as a parameter
         //add the appropriate file type as the suffix
         //return the filename with the suffix added
-        return "";
+        return fileName.concat(".csv");
     }
+
     //default constructor
     public PokemonHands(){
         //make a deck with one playset of a Pokemon (4 cards)

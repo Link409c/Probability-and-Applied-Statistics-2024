@@ -24,7 +24,7 @@ public interface DeckAnalyzer<C> {
     /**
      * determine the outcome of the drawn hand based on the program's goals
      */
-    void evaluateHand();
+    boolean evaluateHand();
 
 
 }
