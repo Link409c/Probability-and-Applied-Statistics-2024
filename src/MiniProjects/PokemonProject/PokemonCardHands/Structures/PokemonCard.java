@@ -1,4 +1,4 @@
-package MiniProjects.PokemonCardHands.Structures;
+package MiniProjects.PokemonProject.PokemonCardHands.Structures;
 
 import InterfacesAbstracts.TradingCard;
 

@@ -1,4 +1,4 @@
-package MiniProjects.PokemonCardHands.Structures;
+package MiniProjects.PokemonProject.PokemonCardHands.Structures;
 
 /**
  * Subclass of the PokemonCard object. Designed to represent a Pokemon.
