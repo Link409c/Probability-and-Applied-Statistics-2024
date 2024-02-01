@@ -1,0 +1,45 @@
+Modeling the Pokemon TCG
+
+A Game has:
+2 Players
+The Playing Field
+
+Each Player's side of the field has:
+An Active Pokemon
+A Bench with a max of 5 Pokemon
+A Prize Card Area
+A Discard Pile
+A Deck
+
+Each Player has a hand.
+
+All cards are Pokemon Cards.
+Pokemon Cards have a Name and an ID Number.
+
+Pokemon Cards can be:
+Pokemon
+Trainer
+Supporter
+Stadium
+Item
+Energy
+
+Pokemon have Type, HP, Resistance, and Weakness.
+    Type, Resistance, and Weakness are all enumerated variables of type PokemonType.
+Pokemon have attached energy.
+    Attached energy can be any type and the list has no size limit.
+Pokemon can have two attacks. They can cost energy.
+    Attack methods take a target variable which must be a Pokemon.
+    If they have a cost, the method will check the Pokemon's list of energy.
+    If the cost is met, the attack can be used. If not, display an error.
+Pokemon can have a special ability / Pokemon Power.
+
+Trainer cards have a single effect.
+
+Supporter cards have a single effect.
+
+Stadiums have a single effect.
+
+Items have a single effect.
+
+Energy cards have a Type, Amount Supplied (usually 1), and may have an effect.
