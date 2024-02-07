@@ -1,4 +1,4 @@
-package MiniProjects.PokemonProject.PokemonCardHands.Structures;
+package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
 import InterfacesAbstracts.TradingCard;
 
@@ -8,4 +8,7 @@ import InterfacesAbstracts.TradingCard;
  */
 public class PokemonCard extends TradingCard {
 
+    public PokemonCard(String aName, String anID){
+        super(aName, anID);
+    }
 }

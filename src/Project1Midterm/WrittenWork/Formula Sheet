@@ -8,7 +8,7 @@ Mean: The average of a set of values.
 
     "The sum of all the values divided by the amount of values"
 
-Median: The middle value of a set of values.
+Median: The middle value of an ordered set of values.
 
 Mode: The most represented value in a set.
 
@@ -42,3 +42,15 @@ Bell Curve AKA Gaussian Distribution AKA Normal Distribution
 µ +- σ  = 67%
 µ +- 2σ =
 µ +- 3σ =
+
+Permutations
+    An ordered arrangement of r distinct objects. The number of ways of ordering n
+    distinct objects taken r at a time.
+
+    n! / (n-r)!
+
+Multinomial Coefficients
+    The number of ways of partitioning n distinct objects into k disjoint subsets of sizes.
+    n1, n2, n3, ..., nk
+
+    n! / n1!n2!n3!...nk!

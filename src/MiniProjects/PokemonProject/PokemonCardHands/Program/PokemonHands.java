@@ -2,10 +2,10 @@ package MiniProjects.PokemonProject.PokemonCardHands.Program;
 
 import InterfacesAbstracts.DeckAnalyzer;
 import InterfacesAbstracts.FileAble;
-import MiniProjects.PokemonProject.PokemonCardHands.Structures.Energy;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Energy;
 import MiniProjects.PokemonProject.PokemonCardHands.Structures.HandResult;
-import MiniProjects.PokemonProject.PokemonCardHands.Structures.Pokemon;
-import MiniProjects.PokemonProject.PokemonCardHands.Structures.PokemonCard;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Pokemon;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonCard;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -51,6 +51,8 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
                 }
             }
         }
+        //run the program
+        //either until pokemon = deck count or success rate hits 100%
         while(pokemonCount <= FULL_DECK_COUNT && successRate < 1.0) {
             shuffleDeck();
             successes = 0;
