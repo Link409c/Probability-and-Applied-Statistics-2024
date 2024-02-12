@@ -4,10 +4,12 @@ import InterfacesAbstracts.Attackable;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Pokemon;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
 
+import java.util.ArrayList;
+
 public class Zangoose extends Pokemon implements Attackable<Pokemon> {
 
     public Zangoose(){
-        super("Zangoose", "335", 90, PokemonType.Normal);
+        super("Zangoose", "335", 90, PokemonType.Normal, new ArrayList<>());
         setSwordsDance(false);
     }
 
@@ -31,7 +33,7 @@ public class Zangoose extends Pokemon implements Attackable<Pokemon> {
     /**
      * Zangoose's second attack is Swords Dance. Sets the flag to true.
      * Zangoose's next attack will do more damage.
-     * @param thisPokemon the opposing active pokemon
+     * @param thisPokemon this object
      * @return the object receives no changes to its parameters
      */
     public Pokemon attackTwo(Pokemon thisPokemon){
