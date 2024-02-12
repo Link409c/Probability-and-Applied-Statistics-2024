@@ -1,6 +1,10 @@
 package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
+import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.EvolutionType;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
+
+import java.util.ArrayList;
+
 
 /**
  * Subclass of the PokemonCard object. Designed to represent a Pokemon.
@@ -11,15 +15,19 @@ public class Pokemon extends PokemonCard {
         super("Pikachu", "025");
         setHp(50);
         setType(PokemonType.Electric);
+        setEvolutionType(EvolutionType.Basic);
         setResistance(this.getType());
         setWeakness(this.getType());
+        setAttachedEnergy(new ArrayList<>());
     }
-    public Pokemon(String aName, String anID, int anHP, PokemonType aType){
+    public Pokemon(String aName, String anID, int anHP,
+                   PokemonType aType, ArrayList<Energy> theEnergy){
         super(aName, anID);
         setHp(anHP);
         setType(aType);
         setWeakness(checkWeakness());
         setResistance(checkResistance());
+        setAttachedEnergy(theEnergy);
     }
 
     public PokemonType checkWeakness(){
@@ -86,6 +94,14 @@ public class Pokemon extends PokemonCard {
         this.type = type;
     }
 
+    public EvolutionType getEvolutionType() {
+        return evolutionType;
+    }
+
+    public void setEvolutionType(EvolutionType evolutionType) {
+        this.evolutionType = evolutionType;
+    }
+
     public PokemonType getWeakness() {
         return weakness;
     }
@@ -102,11 +118,23 @@ public class Pokemon extends PokemonCard {
         this.resistance = resistance;
     }
 
+    public ArrayList<Energy> getAttachedEnergy() {
+        return attachedEnergy;
+    }
+
+    public void setAttachedEnergy(ArrayList<Energy> attachedEnergy) {
+        this.attachedEnergy = attachedEnergy;
+    }
+
     private int hp;
 
     private PokemonType type;
 
+    private EvolutionType evolutionType;
+
     private PokemonType weakness;
 
     private PokemonType resistance;
+
+    private ArrayList<Energy> attachedEnergy;
 }
