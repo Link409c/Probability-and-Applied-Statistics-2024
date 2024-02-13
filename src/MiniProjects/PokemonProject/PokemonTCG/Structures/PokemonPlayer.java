@@ -18,6 +18,18 @@ import java.util.Stack;
  */
 public class PokemonPlayer {
 
+    //parameterized constructor
+    public PokemonPlayer(String aName, Stack<PokemonCard> aDeck, ArrayList<PokemonCard> aDiscard,
+                         Pokemon anActivePokemon, Pokemon[] aBench, ArrayList<PokemonCard> aHand,
+                         PokemonCard[] thePrizes){
+        setPlayerName(aName);
+        setDeck(aDeck);
+        setDiscard(aDiscard);
+        setActivePokemon(anActivePokemon);
+        setBench(aBench);
+        setHand(aHand);
+        setPrizeCards(thePrizes);
+    }
     /**
      * Default Constructor randomly chooses one of two ways to construct
      * the Deck for a Player Object and populates the other parameters with
