@@ -1,5 +1,6 @@
 package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
+import InterfacesAbstracts.Attackable;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.EvolutionType;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
 
@@ -9,7 +10,15 @@ import java.util.ArrayList;
 /**
  * Subclass of the PokemonCard object. Designed to represent a Pokemon.
  */
-public class Pokemon extends PokemonCard {
+public class Pokemon extends PokemonCard implements Attackable<Pokemon> {
+
+    public Pokemon attackOne(Pokemon target){
+        return target;
+    }
+
+    public Pokemon attackTwo(Pokemon target){
+        return target;
+    }
 
     public Pokemon(){
         super("Pikachu", "025");

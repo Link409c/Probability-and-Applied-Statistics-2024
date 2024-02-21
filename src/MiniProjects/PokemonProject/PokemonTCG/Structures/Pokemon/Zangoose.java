@@ -6,7 +6,7 @@ import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
 
 import java.util.ArrayList;
 
-public class Zangoose extends Pokemon implements Attackable<Pokemon> {
+public class Zangoose extends Pokemon{
 
     public Zangoose(){
         super("Zangoose", "335", 90, PokemonType.Normal, new ArrayList<>());
@@ -19,6 +19,7 @@ public class Zangoose extends Pokemon implements Attackable<Pokemon> {
      * @param theTarget target of the attack
      * @return the target object to update the opponent active pokemon object
      */
+    @Override
     public Pokemon attackOne(Pokemon theTarget){
         if(swordsDance) {
             theTarget.setHp(theTarget.getHp() - 80);

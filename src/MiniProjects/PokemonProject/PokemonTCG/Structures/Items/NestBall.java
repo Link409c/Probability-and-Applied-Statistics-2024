@@ -4,7 +4,7 @@ import InterfacesAbstracts.Modifier;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Item;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Pokemon;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonCard;
-import MiniProjects.PokemonProject.PokemonTCG.Structures.PokemonPlayer;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -3,7 +3,7 @@ package MiniProjects.PokemonProject.PokemonTCG.Structures.Pokemon;
 import InterfacesAbstracts.Attackable;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Pokemon;
 
-public class Pikachu extends Pokemon implements Attackable<Pokemon> {
+public class Pikachu extends Pokemon{
 
     public Pikachu(){
         super();

@@ -2,12 +2,15 @@ package MiniProjects.PokemonProject.PokemonTCG.Program;
 
 import InterfacesAbstracts.CardGameEnvironment;
 import InterfacesAbstracts.FileAble;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Pokemon;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonCard;
-import MiniProjects.PokemonProject.PokemonTCG.Structures.PokemonPlayer;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonPlayer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 public class PokemonGame implements CardGameEnvironment<PokemonCard, PokemonPlayer>, FileAble {
 
@@ -29,27 +32,78 @@ public class PokemonGame implements CardGameEnvironment<PokemonCard, PokemonPlay
             }
         }
         //determine winner by whichever prize list has no cards
+
         return null;
     }
 
     @Override
     public void buildGame() {
-        //create both player objects
-        //can either call default constructors or pass in deck files using fileable
+        //check hands and mulligan while player has no pokemon
+        PokemonPlayer currPlayer;
+        for(int i = 0; i < 2; i++) {
+            if(i == 0){
+                currPlayer = getPlayerOne();
+                while(!currPlayer.getHand().contains(Pokemon.class)) {
+                    mulliganHand(currPlayer);
+                    getPlayerTwo().getHand().add(getPlayerTwo().getDeck().pop());
+                }
+            }else{
+                currPlayer = getPlayerTwo();
+                while(!currPlayer.getHand().contains(Pokemon.class)) {
+                    mulliganHand(currPlayer);
+                    getPlayerOne().getHand().add(getPlayerOne().getDeck().pop());
+                }
+            }
+        }
         //players choose their active pokemon and pokemon to add to the bench
-        //if no pokemon in hand, the player must shuffle the hand into the deck and draw a new one
-        //then the other player draws a card
-        //after active pokemon and benches are set, set each player's prize cards
+        Scanner in = new Scanner(System.in);
+        for(int i = 0; i < 2; i++) {
+            if(i == 0){
+                currPlayer = getPlayerOne();
+                while(!currPlayer.getHand().contains(Pokemon.class)) {
+                    mulliganHand(currPlayer);
+                    getPlayerTwo().getHand().add(getPlayerTwo().getDeck().pop());
+                }
+            }else {
+                currPlayer = getPlayerTwo();
+                while (!currPlayer.getHand().contains(Pokemon.class)) {
+                    mulliganHand(currPlayer);
+                    getPlayerOne().getHand().add(getPlayerOne().getDeck().pop());
+                }
+            }
+            System.out.println("Choose your active Pokemon, " + );
+            //after active pokemon and benches are set, set each player's prize cards
+        }
         //choose who goes first
+    }
+
+    /**
+     * shuffles the current hand into the deck and draw the same number of cards.
+     * @param p the player who conducts the mulligan.
+     */
+    public void mulliganHand(PokemonPlayer p){
+        //get the hand size
+        int handSize = p.getHand().size();
+        //put the current hand back in the deck
+        for (PokemonCard c : p.getHand()) {
+            p.getDeck().add(c);
+        }
+        p.setHand(new ArrayList<>());
+        //shuffle the deck
+        Collections.shuffle(p.getDeck());
+        //draw the same number of cards
+        for(int i = 0; i < handSize; i++){
+            p.getHand().add(p.getDeck().pop());
+        }
     }
 
     @Override
     public void conductTurn(PokemonPlayer turnPlayer) {
         //the turn player
-            //draws a card
-            //plays items, trainers, supporters, stadiums, attaches energy, evolves pokemon.
-            //attacks using the active pokemon.
-            //after attacking the turn ends and the other player takes their turn.
+        //draws a card
+        //plays items, trainers, supporters, stadiums, attaches energy, evolves pokemon.
+        //attacks using the active pokemon.
+        //after attacking the turn ends and the other player takes their turn.
     }
 
     /**

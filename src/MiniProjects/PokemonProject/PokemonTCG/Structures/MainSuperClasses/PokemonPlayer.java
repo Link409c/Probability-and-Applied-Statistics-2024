@@ -1,4 +1,4 @@
-package MiniProjects.PokemonProject.PokemonTCG.Structures;
+package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Items.NestBall;
@@ -18,7 +18,26 @@ import java.util.Stack;
  */
 public class PokemonPlayer {
 
-    //parameterized constructor
+    public void drawCard(){}
+
+    public Pokemon declareAttack(Pokemon p){}
+
+    public PokemonPlayer useTrainer(PokemonPlayer p){}
+
+    public PokemonPlayer useItem(PokemonPlayer p){}
+
+    public PokemonPlayer changeBench(){}
+
+    /**
+     * Parameterized Constructor passes populated structures to the Player Object.
+     * @param aName Player Name
+     * @param aDeck Deck of Pokemon Cards
+     * @param aDiscard Discard Pile
+     * @param anActivePokemon Active Pokemon
+     * @param aBench Bench of Pokemon
+     * @param aHand hand of Pokemon Cards
+     * @param thePrizes Prize Cards
+     */
     public PokemonPlayer(String aName, Stack<PokemonCard> aDeck, ArrayList<PokemonCard> aDiscard,
                          Pokemon anActivePokemon, Pokemon[] aBench, ArrayList<PokemonCard> aHand,
                          PokemonCard[] thePrizes){
