@@ -51,8 +51,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
                 }
             }
         }
-        //run the program
-        //either until pokemon = deck count or success rate hits 100%
+        //run the program either until pokemon = deck count or success rate hits 100%
         while(pokemonCount <= FULL_DECK_COUNT && successRate < 1.0) {
             shuffleDeck();
             successes = 0;
@@ -79,7 +78,6 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
             System.out.println(getTheResults().getLast().getNumPokemon() + ", "
                     + getTheResults().getLast().getSuccessRate());
             */
-            //repeat until the chance of success is as close to 100% as possible
             pokemonCount++;
             makeDeck(pokemonCount);
         }
