@@ -1,0 +1,27 @@
+Writing a new monte carlo simulation. We'll use the existing pokemon deck to do this.
+
+A charizard deck needs to find a rare candy to have a chance at winning.
+
+What if the rare candy isnt in the deck ? ie. it's in the prize pile.
+
+Run the program with 1, 2, 3, and 4 rare candy in the deck.
+
+Find the odds, given a pokemon was in the opening hand, we do NOT draw a rare candy.
+
+Sample Run of the program:
+
+Make a Deck with a number of Pokemon, Energy, Trainers, etc.
+Use the optimal amount of Pokemon we found from the first program.
+Start the deck with one rare candy.
+
+Draw a hand, and determine 2 things:
+    if there is a Pokemon in the hand,
+        is there a rare candy in the hand?
+            if not, is it in the prizes?
+    if there is not a Pokemon in the hand,
+        is there a rare candy in the hand?
+            if not, is it in the prizes?
+
+Get all these outcomes, and store the information in a data structure to populate an output file.
+
+Then, calculate the probabilities on paper and compare the results.
