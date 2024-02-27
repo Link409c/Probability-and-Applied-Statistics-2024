@@ -13,10 +13,12 @@ import java.util.ArrayList;
 public class Pokemon extends PokemonCard implements Attackable<Pokemon> {
 
     public Pokemon attackOne(Pokemon target){
+        target.setHp(target.getHp() - 10);
         return target;
     }
 
     public Pokemon attackTwo(Pokemon target){
+        target.setHp(target.getHp() - 10);
         return target;
     }
 
