@@ -7,8 +7,12 @@ import InterfacesAbstracts.TradingCard;
  * emulating aspects of the Pokemon Trading Card Game.
  */
 public class PokemonCard extends TradingCard {
-
     public PokemonCard(String aName, String anID){
         super(aName, anID);
+    }
+
+    public PokemonCard(){
+        setCardName("PokemonCard");
+        setIdCode("NoID");
     }
 }

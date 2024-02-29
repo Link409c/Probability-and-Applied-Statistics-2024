@@ -10,6 +10,10 @@ public class TradingCard {
         setIdCode(anIDCode);
     }
 
+    public TradingCard(){
+        setCardName("TradingCard");
+        setIdCode("NoID");
+    }
     public String getCardName() {
         return String.valueOf(cardName);
     }

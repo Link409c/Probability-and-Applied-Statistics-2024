@@ -107,10 +107,6 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         setDeck(newDeck);
     }
 
-    @Override
-    public void makeDeck(int cardCountOne, int cardCountTwo, int cardCountThree) {
-
-    }
 
     /**
      * Shuffles the deck by using an array and the Random class.
