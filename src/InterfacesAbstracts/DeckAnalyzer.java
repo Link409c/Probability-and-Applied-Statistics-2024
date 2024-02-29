@@ -10,7 +10,6 @@ public interface DeckAnalyzer<C> {
      */
     void makeDeck(int cardCount);
 
-    void makeDeck(int cardCountOne, int cardCountTwo, int cardCountThree);
 
     /**
      * randomize the order of the objects in the deck
