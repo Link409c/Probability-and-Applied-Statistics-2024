@@ -107,6 +107,11 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         setDeck(newDeck);
     }
 
+    @Override
+    public void makeDeck(int cardCountOne, int cardCountTwo, int cardCountThree) {
+
+    }
+
     /**
      * Shuffles the deck by using an array and the Random class.
      * Adapted from Fall 2023 Probability and Applied Statistics
@@ -304,6 +309,10 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
 
     public void setTheResults(ArrayList<HandResult> theResults) {
         this.theResults = theResults;
+    }
+
+    public int getFullDeckCount(){
+        return FULL_DECK_COUNT;
     }
 
     /**
