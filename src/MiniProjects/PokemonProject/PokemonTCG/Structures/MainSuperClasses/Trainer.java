@@ -1,6 +1,13 @@
 package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
-public class Trainer extends PokemonCard{
+import InterfacesAbstracts.Modifier;
+
+public class Trainer extends PokemonCard implements Modifier<PokemonPlayer> {
+
+    @Override
+    public PokemonPlayer modify(PokemonPlayer objectToModify) {
+        return null;
+    }
 
     public Trainer(){
         super("Professor's Research", "T01");
