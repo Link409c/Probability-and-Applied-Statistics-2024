@@ -32,8 +32,11 @@ public class PokemonGame implements CardGameEnvironment<PokemonCard, PokemonPlay
             }
         }
         //determine winner by whichever prize list has no cards
-
-        return null;
+        if(getPlayerOne().isWinner()){
+            return getPlayerOne();
+        }else{
+            return getPlayerTwo();
+        }
     }
 
     @Override
@@ -44,66 +47,40 @@ public class PokemonGame implements CardGameEnvironment<PokemonCard, PokemonPlay
             if(i == 0){
                 currPlayer = getPlayerOne();
                 while(!currPlayer.getHand().contains(Pokemon.class)) {
-                    mulliganHand(currPlayer);
+                    currPlayer.mulliganHand();
                     getPlayerTwo().getHand().add(getPlayerTwo().getDeck().pop());
                 }
+                setPlayerOne(currPlayer);
             }else{
                 currPlayer = getPlayerTwo();
                 while(!currPlayer.getHand().contains(Pokemon.class)) {
-                    mulliganHand(currPlayer);
+                    currPlayer.mulliganHand();
                     getPlayerOne().getHand().add(getPlayerOne().getDeck().pop());
                 }
+                setPlayerTwo(currPlayer);
             }
         }
-        //players choose their active pokemon and pokemon to add to the bench
         Scanner in = new Scanner(System.in);
-        for(int i = 0; i < 2; i++) {
-            if(i == 0){
-                currPlayer = getPlayerOne();
-                while(!currPlayer.getHand().contains(Pokemon.class)) {
-                    mulliganHand(currPlayer);
-                    getPlayerTwo().getHand().add(getPlayerTwo().getDeck().pop());
-                }
-            }else {
-                currPlayer = getPlayerTwo();
-                while (!currPlayer.getHand().contains(Pokemon.class)) {
-                    mulliganHand(currPlayer);
-                    getPlayerOne().getHand().add(getPlayerOne().getDeck().pop());
-                }
-            }
-            System.out.println("Choose your active Pokemon, " + );
-            //after active pokemon and benches are set, set each player's prize cards
-        }
+        //players choose their active pokemon and pokemon to add to the bench
+        System.out.println("Choose your active Pokemon, " + getPlayerOne());
+        //after active pokemon and benches are set, set each player's prize cards
         //choose who goes first
     }
 
-    /**
-     * shuffles the current hand into the deck and draw the same number of cards.
-     * @param p the player who conducts the mulligan.
-     */
-    public void mulliganHand(PokemonPlayer p){
-        //get the hand size
-        int handSize = p.getHand().size();
-        //put the current hand back in the deck
-        for (PokemonCard c : p.getHand()) {
-            p.getDeck().add(c);
-        }
-        p.setHand(new ArrayList<>());
-        //shuffle the deck
-        Collections.shuffle(p.getDeck());
-        //draw the same number of cards
-        for(int i = 0; i < handSize; i++){
-            p.getHand().add(p.getDeck().pop());
-        }
-    }
-
     @Override
-    public void conductTurn(PokemonPlayer turnPlayer) {
+    public PokemonPlayer conductTurn(PokemonPlayer turnPlayer) {
         //the turn player
         //draws a card
+        turnPlayer.drawCard();
         //plays items, trainers, supporters, stadiums, attaches energy, evolves pokemon.
-        //attacks using the active pokemon.
+        boolean declaredAttack = false;
+        while(!declaredAttack){
+            //do stuff
+            //attack using the active pokemon.
+            //if you attack, set the flag to true
+        }
         //after attacking the turn ends and the other player takes their turn.
+        return turnPlayer;
     }
 
     /**
