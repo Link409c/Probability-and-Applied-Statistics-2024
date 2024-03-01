@@ -18,4 +18,8 @@ public class CandyHandResult extends HandResult{
      * the total number of "Rare Candy" cards in the deck.
      */
     private int numCandy;
+
+    private boolean handHasCandy;
+
+    private boolean prizesHasCandy;
 }
