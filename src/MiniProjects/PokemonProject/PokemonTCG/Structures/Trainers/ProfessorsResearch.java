@@ -1,9 +1,8 @@
 package MiniProjects.PokemonProject.PokemonTCG.Structures.Trainers;
 
-import InterfacesAbstracts.Modifier;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonCard;
-import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Trainer;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonPlayer;
+import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Trainer;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -11,7 +10,7 @@ import java.util.Stack;
 /**
  * Object modeling the trainer card Professor's Research.
  */
-public class ProfessorsResearch extends Trainer implements Modifier<PokemonPlayer> {
+public class ProfessorsResearch extends Trainer{
 
     public ProfessorsResearch(){
         setCardName("Professor's Research");
