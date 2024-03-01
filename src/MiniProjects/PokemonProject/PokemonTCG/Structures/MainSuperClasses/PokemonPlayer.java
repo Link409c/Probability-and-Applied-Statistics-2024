@@ -2,14 +2,12 @@ package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Items.NestBall;
-import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Energy;
-import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Pokemon;
-import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonCard;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Pokemon.Pikachu;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Pokemon.Zangoose;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Trainers.ProfessorsResearch;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Stack;
 
@@ -18,29 +16,65 @@ import java.util.Stack;
  */
 public class PokemonPlayer {
 
-    public void drawCard(){}
+    public void drawCard() {
+        getHand().add(getDeck().pop());
+    }
 
-    public Pokemon declareAttack(Pokemon p){}
+    /**
+     * shuffles the current hand into the deck and draw the same number of cards.
+     */
+    public void mulliganHand() {
+        //get the hand size
+        int handSize = getHand().size();
+        //put the current hand back in the deck
+        for (PokemonCard c : getHand()) {
+            getDeck().add(c);
+        }
+        setHand(new ArrayList<>());
+        //shuffle the deck
+        Collections.shuffle(getDeck());
+        //draw the same number of cards
+        for (int i = 0; i < handSize; i++) {
+            getHand().add(getDeck().pop());
+        }
+    }
 
-    public PokemonPlayer useTrainer(PokemonPlayer p){}
+    public Pokemon declareAttack(Pokemon p) {
+    }
 
-    public PokemonPlayer useItem(PokemonPlayer p){}
+    public PokemonPlayer useTrainer(PokemonPlayer p) {
+    }
 
-    public PokemonPlayer changeBench(){}
+    public PokemonPlayer useItem(PokemonPlayer p) {
+    }
+
+    public PokemonPlayer changeBench() {
+    }
+
+    public boolean isWinner() {
+        int prizesRemaining = 6;
+        for (PokemonCard p : getPrizeCards()) {
+            if (p == null) {
+                prizesRemaining--;
+            }
+        }
+        return prizesRemaining == 0;
+    }
 
     /**
      * Parameterized Constructor passes populated structures to the Player Object.
-     * @param aName Player Name
-     * @param aDeck Deck of Pokemon Cards
-     * @param aDiscard Discard Pile
+     *
+     * @param aName           Player Name
+     * @param aDeck           Deck of Pokemon Cards
+     * @param aDiscard        Discard Pile
      * @param anActivePokemon Active Pokemon
-     * @param aBench Bench of Pokemon
-     * @param aHand hand of Pokemon Cards
-     * @param thePrizes Prize Cards
+     * @param aBench          Bench of Pokemon
+     * @param aHand           hand of Pokemon Cards
+     * @param thePrizes       Prize Cards
      */
     public PokemonPlayer(String aName, Stack<PokemonCard> aDeck, ArrayList<PokemonCard> aDiscard,
                          Pokemon anActivePokemon, Pokemon[] aBench, ArrayList<PokemonCard> aHand,
-                         PokemonCard[] thePrizes){
+                         PokemonCard[] thePrizes) {
         setPlayerName(aName);
         setDeck(aDeck);
         setDiscard(aDiscard);
@@ -49,36 +83,33 @@ public class PokemonPlayer {
         setHand(aHand);
         setPrizeCards(thePrizes);
     }
+
     /**
      * Default Constructor randomly chooses one of two ways to construct
      * the Deck for a Player Object and populates the other parameters with
      * default values.
      */
-    public PokemonPlayer(){
+    public PokemonPlayer() {
         int i = new Random().nextInt(2);
         Stack<PokemonCard> newDeck = new Stack<>();
-        if(i == 0){
+        if (i == 0) {
             //make pikachus
-            for(int k = 0; k < 4; k++){
-                for(int j = 0; j < 15; j++){
-                    switch(k){
+            for (int k = 0; k < 4; k++) {
+                for (int j = 0; j < 15; j++) {
+                    switch (k) {
                         //add energy
-                        case 0 ->
-                            newDeck.add(new Energy("Electric Energy",
-                                    "E04", PokemonType.Electric));
+                        case 0 -> newDeck.add(new Energy("Electric Energy",
+                                "E04", PokemonType.Electric));
                         //add pokemon
-                        case 1 ->
-                            newDeck.add(new Pikachu());
+                        case 1 -> newDeck.add(new Pikachu());
                         //add items
-                        case 2 ->
-                            newDeck.add(new NestBall());
+                        case 2 -> newDeck.add(new NestBall());
                         //add trainers
-                        case 3 ->
-                            newDeck.add(new ProfessorsResearch());
+                        case 3 -> newDeck.add(new ProfessorsResearch());
                     }
                 }
             }
-        }else {
+        } else {
             //make zangooses
             for (int k = 0; k < 4; k++) {
                 for (int j = 0; j < 15; j++) {
@@ -120,10 +151,11 @@ public class PokemonPlayer {
         this.activePokemon = activePokemon;
     }
 
-    public void setBench(Pokemon[] aBench){
+    public void setBench(Pokemon[] aBench) {
         this.bench = aBench;
     }
-    public Pokemon[] getBench(){
+
+    public Pokemon[] getBench() {
         return this.bench;
     }
 
@@ -135,24 +167,30 @@ public class PokemonPlayer {
         this.prizeCards = prizeCards;
     }
 
-    public void setHand(ArrayList<PokemonCard> aHand){
+    public void setHand(ArrayList<PokemonCard> aHand) {
         this.hand = aHand;
     }
-    public ArrayList<PokemonCard> getHand(){
+
+    public ArrayList<PokemonCard> getHand() {
         return this.hand;
     }
-    public void setDiscard(ArrayList<PokemonCard> aDiscard){
+
+    public void setDiscard(ArrayList<PokemonCard> aDiscard) {
         this.discard = aDiscard;
     }
-    public ArrayList<PokemonCard> getDiscard(){
+
+    public ArrayList<PokemonCard> getDiscard() {
         return this.discard;
     }
-    public void setDeck(Stack<PokemonCard> aDeck){
+
+    public void setDeck(Stack<PokemonCard> aDeck) {
         this.deck = aDeck;
     }
-    public Stack<PokemonCard> getDeck(){
+
+    public Stack<PokemonCard> getDeck() {
         return this.deck;
     }
+
     private Pokemon activePokemon;
     private Pokemon[] bench;
     private PokemonCard[] prizeCards;
