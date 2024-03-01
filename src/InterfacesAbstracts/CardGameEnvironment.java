@@ -21,7 +21,7 @@ public interface CardGameEnvironment<T, P> {
      * step through each of the procedures in a normal turn of this card game.
      * @param turnPlayer the player whose turn it is
      */
-    void conductTurn(P turnPlayer);
+    P conductTurn(P turnPlayer);
     /**
      * displays the current objects in play for all players.
      * @return a table representation of the current game board.
