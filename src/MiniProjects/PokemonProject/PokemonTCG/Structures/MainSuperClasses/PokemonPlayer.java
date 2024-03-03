@@ -40,15 +40,18 @@ public class PokemonPlayer {
     }
 
     public Pokemon declareAttack(Pokemon p) {
+        return p;
     }
 
     public PokemonPlayer useTrainer(PokemonPlayer p) {
+        return p;
     }
 
     public PokemonPlayer useItem(PokemonPlayer p) {
+        return p;
     }
 
-    public PokemonPlayer changeBench() {
+    public void changeBench() {
     }
 
     public boolean isWinner() {
