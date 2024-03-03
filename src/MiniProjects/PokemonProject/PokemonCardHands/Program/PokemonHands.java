@@ -1,5 +1,6 @@
 package MiniProjects.PokemonProject.PokemonCardHands.Program;
 
+import InterfacesAbstracts.Countable;
 import InterfacesAbstracts.DeckAnalyzer;
 import InterfacesAbstracts.FileAble;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.Energy;
@@ -19,8 +20,17 @@ import java.util.Stack;
  * The program will find the optimal ratio of Pokemon to other cards in a 60-card
  * deck.
  */
-public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
+public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble, Countable<Stack<PokemonCard>, PokemonCard> {
 
+    /**
+     * runs the appropriate number of trials and writes the results to a file.
+     * @param filePath the directory to save the output file.
+     * @param numTrials the intended number of trials to run for each ratio
+     *                  of pokemon card objects in the deck.
+     * @return calls the exportObjects method, which will produce a status message
+     * for the user.
+     * @throws IOException if the filepath is invalid.
+     */
     public String runProgram(String filePath, int numTrials) throws IOException {
         //run the appropriate amount of trials
         runTrials(numTrials);
@@ -196,6 +206,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      * @param filePath the desired path to create the file
      * @return a message informing the user if the export was successful.
      */
+    @Override
     public String exportObjects(String filePath) throws IOException {
         //different ways to approach exporting results
         //can give each hand with cards
@@ -226,6 +237,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      * @param fileName the current string representing the file name
      * @return returns the file name with a .csv suffix
      */
+    @Override
     public String addFileType(String fileName){
         //take the fileName as a parameter
         //add the appropriate file type as the suffix
@@ -238,6 +250,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
      * @param fileName the current string representing the file name.
      * @return the file name concatenated with the date and time
      */
+    @Override
     public String addIdentifier(String fileName){
         //get the date and time
         String dateTime = String.valueOf(LocalDateTime.now());
@@ -246,12 +259,26 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble {
         return fileName.concat(dateTime);
     }
 
+    /**
+     * Count the number of a specific card type in the deck.
+     * @param theDeck the data structure to search
+     * @param target the object to search for
+     * @return the number of those cards in the deck
+     */
+    public int count(Stack<PokemonCard> theDeck, PokemonCard target){
+        int count = 0;
+        for(PokemonCard c : theDeck){
+            if (c.getClass() == target.getClass()){
+                count++;
+            }
+        }
+        return count;
+    }
+
     //default constructor
     public PokemonHands(){
         //make a deck with one pokemon
         makeDeck(1);
-        //shuffle the deck
-        //set deck as the global
         //set hand size to 7
         setHandSize(7);
         //set the hand to an empty arraylist
