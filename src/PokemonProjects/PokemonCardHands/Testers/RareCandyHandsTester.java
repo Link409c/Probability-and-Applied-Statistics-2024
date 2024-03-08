@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/MiniProjects/PokemonProject/PokemonCardHands/Testers/RareCandyHandsTester.java
-package MiniProjects.PokemonProject.PokemonCardHands.Testers;
-========
-package PokemonProjects.PokemonCardHands.TesterAndResults;
->>>>>>>> origin/master:src/PokemonProjects/PokemonCardHands/TesterAndResults/RareCandyHandsTester.java
+package PokemonProjects.PokemonCardHands.Testers;
 
 import PokemonProjects.PokemonCardHands.Program.RareCandyHands;
 
