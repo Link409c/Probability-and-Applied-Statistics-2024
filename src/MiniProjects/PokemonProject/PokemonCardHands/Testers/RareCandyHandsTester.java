@@ -1,4 +1,4 @@
-package MiniProjects.PokemonProject.PokemonCardHands.TesterAndResults;
+package MiniProjects.PokemonProject.PokemonCardHands.Testers;
 
 import MiniProjects.PokemonProject.PokemonCardHands.Program.RareCandyHands;
 

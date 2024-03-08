@@ -1,4 +1,4 @@
-package MiniProjects.PokemonProject.PokemonTCG.TesterAndResults;
+package MiniProjects.PokemonProject.PokemonTCG.Tester;
 
 import MiniProjects.PokemonProject.PokemonTCG.Program.PokemonGame;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses.PokemonPlayer;
