@@ -1,5 +1,6 @@
 package MiniProjects.PokemonProject.PokemonTCG.Structures.MainSuperClasses;
 
+import InterfacesAbstracts.Countable;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Enums.PokemonType;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Items.NestBall;
 import MiniProjects.PokemonProject.PokemonTCG.Structures.Pokemon.Pikachu;
@@ -14,7 +15,7 @@ import java.util.Stack;
 /**
  * Data Structure representing the player in a Pokemon Card Game.
  */
-public class PokemonPlayer {
+public class PokemonPlayer implements Countable<ArrayList<PokemonCard>, PokemonCard> {
 
     public void drawCard() {
         getHand().add(getDeck().pop());
@@ -62,6 +63,19 @@ public class PokemonPlayer {
             }
         }
         return prizesRemaining == 0;
+    }
+
+    public int countHand(){
+        return getHand().size();
+    }
+
+    public boolean hasPokemon(){
+        for(PokemonCard c : getHand()){
+            if (c.getClass() == Pokemon.class){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
