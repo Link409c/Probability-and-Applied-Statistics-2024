@@ -48,19 +48,11 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble, Counta
      */
     public void runTrials(int numTrials){
         //pokemon count
-        int pokemonCount = 0;
+        int pokemonCount = count(getDeck(), new Pokemon());
         //initial probability of success
         double successRate = 0;
         //tracking successes in each trial run
         int successes;
-        //get accurate pokemon count in deck
-        if(getDeck() != null) {
-            for (PokemonCard c : getDeck()) {
-                if (c.getClass() == Pokemon.class) {
-                    pokemonCount++;
-                }
-            }
-        }
         //run the program either until pokemon = deck count or success rate hits 100%
         while(pokemonCount <= FULL_DECK_COUNT && successRate < 1.0) {
             shuffleDeck();
