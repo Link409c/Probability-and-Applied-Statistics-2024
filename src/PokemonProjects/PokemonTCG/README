@@ -1,0 +1,7 @@
+This project aims to showcase the user's capability in programming
+defined data structures to emulate the Pokemon Trading Card Game.
+
+Within, you will find many structures utilizing polymorphism to create
+different cards and concepts found in the actual Pokemon Card Game.
+
+Currently, debugging and testing is ongoing to provide a full experience.

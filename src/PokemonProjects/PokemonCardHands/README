@@ -1,0 +1,9 @@
+This project aims to determine optimal ratios for cards in a Pokemon Card Deck.
+
+Two scenarios are presented: A Standard Deck for determining Pokemon counts, and
+a "Charizard Rare Candy" Deck, for determining conditional probability of drawing
+certain combinations of cards.
+
+Associated packages separate user-defined data structures, the programs, testers, and results.
+
+Detailed results are documented in the provided excel sheet.
