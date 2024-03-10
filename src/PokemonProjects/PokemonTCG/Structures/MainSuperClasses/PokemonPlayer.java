@@ -75,6 +75,28 @@ public class PokemonPlayer implements Countable<ArrayList<PokemonCard>, PokemonC
         return handPokemon > 0;
     }
 
+    /**
+     * populates a list with string representations of the cards
+     * in a player's hand.
+     * @return a list of card names.
+     */
+    public ArrayList<String> getHandClasses() {
+        //get the hand
+        ArrayList<PokemonCard> theHand = getHand();
+        //list to hold values
+        ArrayList<String> cardTypes = new ArrayList<>();
+        //for each card,
+        for(PokemonCard c : theHand) {
+            //if its class is not in the list,
+            if(!cardTypes.contains(c.toString())){
+                //add it
+                cardTypes.add(c.toString());
+            }
+        }
+        //return the list
+        return cardTypes;
+    }
+
     @Override
     public int count(ArrayList<PokemonCard> aList, PokemonCard p){
         int count = 0;
