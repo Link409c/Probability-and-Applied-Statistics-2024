@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class SetOpsTester {
     public static void main(String[] args){
-        SetOperations<String> setOperations = new SetOperations<>();
+        SetOperations<String> setOperations = new SetOperations<String>();
         ArrayList<String> setOne = new ArrayList<>();
         ArrayList<String> setTwo = new ArrayList<>();
         setOne.add("A");
