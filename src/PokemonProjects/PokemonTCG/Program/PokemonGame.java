@@ -144,8 +144,12 @@ public class PokemonGame implements CardGameEnvironment<PokemonCard, PokemonPlay
         //draws a card
         turnPlayer.drawCard();
         boolean declaredAttack = false;
+        String choice;
+        Scanner in = new Scanner(System.in);
         while(!declaredAttack){
             //plays items, trainers, supporters, stadiums, attaches energy, evolves pokemon.
+            //get each different card type in the hand
+            //show choices based on these types
             //get user input for what to do
             //if attack, set flag to true
             //attack using the active pokemon.
