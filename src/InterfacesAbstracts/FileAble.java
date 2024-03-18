@@ -2,6 +2,11 @@ package InterfacesAbstracts;
 
 import java.io.IOException;
 
+/**
+* FileAble is an interface designed to be implemented in programs which users want to 
+* import and export data.
+**/
+
 public interface FileAble {
 
     /**
@@ -11,7 +16,7 @@ public interface FileAble {
     void importObjects(String filePath) throws IOException;
 
     /**
-     * exportObjects creates a .csv file from a list of objects and their associated fields.
+     * exportObjects creates a file from a list of objects and their associated fields.
      * Assume the method throws an IOException due to the use of fileReader or BufferedReader.
      * @return a message informing the user if the file was created.
      */
