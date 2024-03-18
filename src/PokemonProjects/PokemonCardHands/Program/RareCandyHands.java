@@ -12,6 +12,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+* Rare Candy Hands Program is a subclass of the Pokemon Hands Program. Much like the
+* previous program, this one too aims to determine optimal ratios of certain cards in
+* a Pokemon Deck. For this program, the aim is to determine the probability of drawing
+* both a "Rare Candy" and a "Charizard" or "Given you draw a Charizard, what is the
+* probability you draw a Rare Candy?". Probabilities are altered by changing the amount
+* of Pokemon and Rare Candy in the deck until an optimal probability is found. The program
+* also determines the probability that, given you do NOT draw a Rare Candy, it is in the 
+* Prize Pile.
+*/
+
 public class RareCandyHands extends PokemonHands{
 
     /**
