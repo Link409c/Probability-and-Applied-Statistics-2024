@@ -16,5 +16,7 @@ discrete random variables and given probabilities.
 
 Written Work contains a formula sheet, as well as a writeup on uses of the Github Version Control System.
 
+This writeup is supplemented by screenshots of the process to rebase a cloned repository using a specific commit.
+
 See the contents of each package for further breakdown of the data structures, programs, tests,
 and documented results of each program.
