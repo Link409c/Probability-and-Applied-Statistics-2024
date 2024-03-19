@@ -1,5 +1,7 @@
 This repository is dedicated to ongoing coursework for Probability and Applied Statistics, Spring 2024.
 
+Projects are separated into Parent folders. Project 1 is all assignments submitted for the Midterm.
+
 The interfaces and abstracts folder contains interfaces which programs
 within the repository implement in different ways. Reference these interfaces
 to gain a base understanding of the functions of each program which implements them.
