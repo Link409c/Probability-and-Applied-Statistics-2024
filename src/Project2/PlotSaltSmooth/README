@@ -1,0 +1,11 @@
+This project aims to show two different implementations of a program which Plots, Salts, and Smooths data points.
+
+The first implementation is user-defined and programmed without external libraries to provide any functionality.
+
+The second implementation showcases similar applications in plotting salting and smoothing data using Octave.
+
+The third implementation extends each user-defined program, using external APIs from JFreeChart and Apache Math
+Commons to define new methods for plotting, salting, and smoothing. These Libraries can also output and display the
+data without needing to use Excel.
+
+Each implementation has its own set of results, and each set of results will be compared and analyzed.
