@@ -3,22 +3,65 @@ package Project2.OtherPrograms;
 import Project1.InterfacesAbstracts.FileAble;
 import Project2.PlotSaltSmooth.Structures.Tuple;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class CSVMaker<E> implements FileAble {
 
+    public int getColumns(String aLine){
+        //will always be at least 1 column if no commas
+        int columns = 1;
+        //if there are commas,
+        if(aLine.contains(",")) {
+            //count the amount
+            while (aLine.contains(",")) {
+                aLine = aLine.substring(aLine.indexOf(',') + 1);
+                columns++;
+            }
+        }
+        return columns;
+    }
+
+    public int getNumVariables(E dataContainer){
+        int count = 0;
+        //make a new instance of the passed class
+        //count each of its variables
+        //return the number
+        return count;
+    }
+
     /**
-     * Import data from a csv and return a list of some type to be used by another program.
-     * @param filePath the absolute filepath to access the file from
-     * @return a list of data to be used by a program.
-     * @throws IOException
+     * populates a list with objects populated using imported data from a .csv file,
+     * mapping each column to a global variable of the passed data structure.
+     * @param filePath the path to import the file from.
+     * @return a list of objects to be used by some program.
+     * @throws IOException if the filepath is invalid or no file exists.
      */
     @Override
-    public E importObjects(String filePath) throws IOException {
-
+    public E importObjects(String filePath, ) throws IOException {
+        //TODO: add exception handling here
+        FileReader fr = new FileReader(filePath);
+        BufferedReader bfr = new BufferedReader(fr);
+        //skip the header
+        bfr.readLine();
+        //get the number of columns
+        String aLine = bfr.toString();
+        int columns = getColumns(aLine);
+        //get the number of global parameters of the structure to import data into
+        int numVariables = getNumVariables();
+        //map each parameter to each column value
+        E struct = getData().newInstance();
+        //get all points in the .csv file
+        String next = bfr.readLine();
+        //break up lines into the associated values
+        while (next != null) {
+            //map the values to each associated parameter
+            //get each variable
+            //move to next line
+            next = bfr.readLine();
+        }
+        return struct;
     }
 
     /**
@@ -44,6 +87,7 @@ public class CSVMaker<E> implements FileAble {
         //add the date and time to the filename
         return fileName.concat(dateTime);
     }
+
     @Override
     public String exportObjects(String filePath, String header) throws IOException {
         String successMsg;
