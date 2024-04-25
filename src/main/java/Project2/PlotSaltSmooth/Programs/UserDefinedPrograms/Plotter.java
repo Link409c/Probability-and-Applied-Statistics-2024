@@ -2,6 +2,7 @@ package Project2.PlotSaltSmooth.Programs.UserDefinedPrograms;
 
 import Project1.InterfacesAbstracts.FileAble;
 import Project2.PlotSaltSmooth.Structures.Tuple;
+import com.sun.media.sound.InvalidDataException;
 
 import java.io.*;
 import java.time.LocalDateTime;

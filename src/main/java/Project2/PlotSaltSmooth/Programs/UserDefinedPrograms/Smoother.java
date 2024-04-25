@@ -2,6 +2,7 @@ package Project2.PlotSaltSmooth.Programs.UserDefinedPrograms;
 
 import Project1.InterfacesAbstracts.FileAble;
 import Project2.PlotSaltSmooth.Structures.Tuple;
+import com.sun.media.sound.InvalidDataException;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -150,13 +151,13 @@ public class Smoother implements FileAble {
         return csvWriter;
     }
 
-    public String runProgram(String filePath, int window) throws IOException{
+    public String runProgram(String filePath, int window) throws IOException {
         //import the values
         importObjects(filePath);
         //if list is null, throw an exception
         if(getSmoothedPoints() == null || getSmoothedPoints().getFirst() == null){
             String errMsg = "Imported values list is null.";
-            throw new IOException(errMsg);
+            throw new InvalidDataException(errMsg);
         }
         else {
             //else, smooth the points
