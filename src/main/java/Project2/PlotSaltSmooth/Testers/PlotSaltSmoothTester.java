@@ -1,4 +1,4 @@
-package Project2.PlotSaltSmooth.Tester;
+package Project2.PlotSaltSmooth.Testers;
 
 import Project2.PlotSaltSmooth.Programs.UserDefinedPrograms.Plotter;
 import Project2.PlotSaltSmooth.Programs.UserDefinedPrograms.Salter;
