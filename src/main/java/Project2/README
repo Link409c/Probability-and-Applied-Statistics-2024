@@ -1,0 +1,18 @@
+This directory contains all files, programs, and reports for the Final Project. Refer to each subdirectory for more
+information.
+
+Contents:
+
+Data Set Analysis: Applications of each topic covered in the course examining a data set. Includes a written report,
+a presentation covering each area, a program calculating each probability in question, and the results and discussion.
+
+Plotter, Salter, & Smoother: A project showing the process of plotting a function to a graph, adding a salt to
+obscure the data, and then smoothing the data using averages to attempt to recognize the original trend in the plot.
+Includes two sets of programs and their respective analyses: Programs written by the student, as well as programs
+implementing the external libraries Apache Math Commons and JFreeChart. The external libraries offer the functions
+the student coded in their own programs as well as the ability to display graphed data without export to another file
+or program, such as excel.
+
+StocksBot: A program designed to examine the trends in historical data of a stock and make decisions to buy, sell,
+or some other actions. Includes the program, its results and a discussion. Stocks data used in testing is included in
+the Files directory.
