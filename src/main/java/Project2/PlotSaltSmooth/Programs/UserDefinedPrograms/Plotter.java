@@ -24,7 +24,6 @@ public class Plotter implements FileAble{
   public String runProgram(String filePath, int numPoints) throws IOException{
     //if the input list has no values,
     if(getInputs() == null || getInputs().size() == 0) {
-      //plot numPoints values
       Random r = new Random();
       //populate the list with random doubles
       for(int i = 0; i < numPoints; i++){
