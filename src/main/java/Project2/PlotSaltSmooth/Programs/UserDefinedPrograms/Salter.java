@@ -111,11 +111,10 @@ public class Salter implements FileAble {
   }
 
   @Override
-  public String exportObjects(String filePath) throws IOException {
+  public String exportObjects(String filePath, String header) throws IOException {
     //string to return
     String successMsg;
     if(filePath != null){
-      String header = "Input,Output";
       //create file writer object with the file path input
       BufferedWriter csvWriter = getBufferedWriter(filePath, header);
       //after loop runs, close the file writer.
@@ -166,8 +165,9 @@ public class Salter implements FileAble {
     filePath = filePath.concat("SaltTest");
     filePath = addIdentifier(filePath);
     filePath = addFileType(filePath);
+    String header = "Input,Output";
     //export the values
-    return exportObjects(filePath);
+    return exportObjects(filePath, header);
   }
 
   public ArrayList<Tuple<Double>> getSaltedPoints() {

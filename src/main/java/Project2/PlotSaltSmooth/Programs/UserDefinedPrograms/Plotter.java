@@ -2,7 +2,6 @@ package Project2.PlotSaltSmooth.Programs.UserDefinedPrograms;
 
 import Project1.InterfacesAbstracts.FileAble;
 import Project2.PlotSaltSmooth.Structures.Tuple;
-import com.sun.media.sound.InvalidDataException;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -39,7 +38,8 @@ public class Plotter implements FileAble{
     filePath = filePath.concat("\\PlotTest");
     filePath = addIdentifier(filePath);
     filePath = addFileType(filePath);
-    return exportObjects(filePath);
+    String header = "Input,Output";
+    return exportObjects(filePath, header);
   }
 
   /**
@@ -94,11 +94,10 @@ public class Plotter implements FileAble{
    * @return a message informing the user the file was created.
    */
   @Override
-  public String exportObjects(String filePath) throws IOException {
+  public String exportObjects(String filePath, String header) throws IOException {
     //string to return
     String successMsg;
     if(filePath != null){
-      String header = "Input,Output";
       //create file writer object with the file path input
       BufferedWriter csvWriter = getBufferedWriter(filePath, header);
       //after loop runs, close the file writer.

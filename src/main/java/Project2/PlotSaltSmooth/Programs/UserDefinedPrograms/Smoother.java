@@ -2,7 +2,6 @@ package Project2.PlotSaltSmooth.Programs.UserDefinedPrograms;
 
 import Project1.InterfacesAbstracts.FileAble;
 import Project2.PlotSaltSmooth.Structures.Tuple;
-import com.sun.media.sound.InvalidDataException;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -115,11 +114,10 @@ public class Smoother implements FileAble {
     }
 
     @Override
-    public String exportObjects(String filePath) throws IOException {
+    public String exportObjects(String filePath, String header) throws IOException {
         //string to return
         String successMsg;
         if(filePath != null){
-            String header = "Input,Output";
             //create file writer object with the file path input
             BufferedWriter csvWriter = getBufferedWriter(filePath, header);
             //after loop runs, close the file writer.
@@ -157,7 +155,7 @@ public class Smoother implements FileAble {
         //if list is null, throw an exception
         if(getSmoothedPoints() == null || getSmoothedPoints().getFirst() == null){
             String errMsg = "Imported values list is null.";
-            throw new InvalidDataException(errMsg);
+            throw new IOException(errMsg);
         }
         else {
             //else, smooth the points
@@ -170,8 +168,9 @@ public class Smoother implements FileAble {
         filePath = filePath.concat("SmoothTest");
         filePath = addIdentifier(filePath);
         filePath = addFileType(filePath);
+        String header = "Input,Output";
         //export the values
-        return exportObjects(filePath);
+        return exportObjects(filePath, header);
     }
     public Smoother(){
         setSmoothedPoints(new ArrayList<>());
