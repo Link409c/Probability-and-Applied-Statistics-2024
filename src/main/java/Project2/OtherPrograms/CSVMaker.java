@@ -39,14 +39,14 @@ public class CSVMaker<E> implements FileAble {
      * @throws IOException if the filepath is invalid or no file exists.
      */
     @Override
-    public E importObjects(String filePath, ) throws IOException {
+    public E importObjects(String filePath, String header) throws IOException {
         //TODO: add exception handling here
         FileReader fr = new FileReader(filePath);
         BufferedReader bfr = new BufferedReader(fr);
         //skip the header
         bfr.readLine();
         //get the number of columns
-        String aLine = bfr.toString();
+        String aLine = bfr.readLine();
         int columns = getColumns(aLine);
         //get the number of global parameters of the structure to import data into
         int numVariables = getNumVariables();
@@ -92,23 +92,25 @@ public class CSVMaker<E> implements FileAble {
     public String exportObjects(String filePath, String header) throws IOException {
         String successMsg;
         //error handling
-        if(filePath != null && (!header.equals("") || header != null)){
-            //create file writer object with the file path input
-            BufferedWriter csvWriter = getBufferedWriter(filePath, header);
-            //after loop runs, close the file writer.
-            csvWriter.close();
-            //update success message informing user file was created.
-            successMsg = "File created in the specified directory: \n " + filePath;
-        }
+        if(filePath != null){
+            if(header == null || header.isEmpty()) {
+                String errMsg = "Error in header.";
+                throw new IOException(errMsg);
+            }else{
+                    //create file writer object with the file path input
+                    BufferedWriter csvWriter = getBufferedWriter(filePath, header);
+                    //after loop runs, close the file writer.
+                    csvWriter.close();
+                    //update success message informing user file was created.
+                    return "File created in the specified directory: \n " + filePath;
+                }
+            }
         //if any error with filename or path occurs,
         else {
             //throw an IO exception informing the user of the error
             String errMsg = "Error in file name or path specified in export method.";
             throw new IOException(errMsg);
         }
-        //return the success message
-        return successMsg;
-        return null;
     }
 
     /**
@@ -128,11 +130,7 @@ public class CSVMaker<E> implements FileAble {
         //count the number of commas + 1 in header
         //these 2 should match
         //for each data point in the list,
-        for (E e : getData()) {
-            //write each line with the variables in order separated by commas
-            csvWriter.newLine();
-            csvWriter.write(t.getInput() + "," + t.getOutput());
-        }
+        //write each line with the variables in order separated by commas
         return csvWriter;
     }
 
