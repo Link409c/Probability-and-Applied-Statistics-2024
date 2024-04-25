@@ -46,7 +46,7 @@ public class StockAnalyzer implements FileAble {
             //create data container to populate
             StockDay nextDay;
             //loop while next line has data
-            while (nextLine != null && !nextLine.equals("")) {
+            while (nextLine != null && !nextLine.isEmpty()) {
                 //split the string at the commas
                 columns = nextLine.split(",");
                 //populate the StockDay object
@@ -96,7 +96,7 @@ public class StockAnalyzer implements FileAble {
      * hold a stock.
      * @return positive to buy, zero to hold, negative to sell.
      */
-    public int determineDailyAction(){
+    public int determineDailyAction(String aDate){
         int action = 0;
         //basic without RSI or more values
         //based on day to day
@@ -105,7 +105,7 @@ public class StockAnalyzer implements FileAble {
         //if close is higher sell
         //if close is lower buy
         //if close is within a value dont do anything
-        action = updateInternalData();
+        action = updateInternalData(aDate);
         //with RSI
         //if more up moves than down moves over a range,
         //if RSI is in a certain range,
@@ -115,16 +115,38 @@ public class StockAnalyzer implements FileAble {
 
     /**
      * calculates the moving average of a specific value over a period of time.
-     * @param value the value from a StockDay object to take the average of.
+     * @param value the index of a value from a StockDay object to take the average of.
      *              Open, Low, High, Close, Adjusted Close are all valid options.
-     * @param midpoint the index of the current point to average around.
+     * @param currDay the index of the current point to average up to.
      * @param window the size of the window in which the average should be calculated.
-     * @return the average of all the data points about the midpoint in the window.
+     * @return the average of all the data points in the window up to the current day.
      */
-    public double movingAverage(String value, int midpoint, int window){
-        //take sum of value indicated by passed string
-        //get average
-        return 0;
+    public double movingAverage(int value, int currDay, int window) throws IllegalArgumentException{
+        double avg = 0;
+        if(value < 1 || value > 5) {
+            String errMsg = "Index value passed to moving average method invalid.";
+            throw new IllegalArgumentException(errMsg);
+        }else if (currDay - window < 0){
+            String errMsg = "Window passed to moving average method exceeds start of data.";
+            throw new IllegalArgumentException(errMsg);
+        }
+        else {
+            for(int i = currDay - window; i <= currDay; i++) {
+                //get day at current index
+                StockDay aDay = getDaysData().get(i);
+                    switch(value){
+                        //take sum of value indicated by passed parameter
+                        case 1 -> avg += aDay.getOpen();
+                        case 2 -> avg += aDay.getLow();
+                        case 3 -> avg += aDay.getHigh();
+                        case 4 -> avg += aDay.getClose();
+                        case 5 -> avg += aDay.getAdjustedClose();
+                    }
+                }
+                //get average of values around that point
+                avg /= window ;
+            }
+        return avg;
     }
 
     /**
@@ -179,13 +201,28 @@ public class StockAnalyzer implements FileAble {
      * updates data on the stock to determine amounts to buy or sell.
      * dependent on changes in averages of whatever value is being monitored.
      */
-    public int updateInternalData(){
+    public int updateInternalData(String date){
+        int action = 0;
         //updating central tendency
+        //get average price (Low + High + Open + Close / 4) today
+        //compare to average of the last week?
+        //today > average, return -1 (sell)
+        //today = average, return 0 (hold)
+        //today < average, return 1 (buy)
         //updating RSI
+        //if date < 14, can't run rsi
+        //else,
+        //RSI < 30, return 1 (buy)
+        //31 <= RSI <= 69, return 0 (hold)
+        //RSI >= 70, return -1 (sell)
         /*
          What probability calculations can be applied here?
+         Get probability of an up move so far
+         Apply binomial distribution for prob of n up moves in the next y days
+         y = 365 - current day of year?
+         n = average number of up moves so far
          */
-        return 0;
+        return action;
     }
 
     /**
@@ -247,7 +284,6 @@ public class StockAnalyzer implements FileAble {
             double avgD = sl.findMean(downMoves);
             //exponential moving avg
             //wilder's smoothing method
-            //calculate Relative Strength
             //avgU over avgD
             double rs = avgU / avgD;
             //calculate RSI using formula
@@ -281,7 +317,7 @@ public class StockAnalyzer implements FileAble {
         for(int i = 0; i < days; i++) {
             StockDay currDay = daysCopy.get(i);
             //call determineDailyAction method
-            int action = determineDailyAction();
+            int action = determineDailyAction(currDay.getDate());
             //update heuristics (moving avg, RSI, etc) to get buy / sell amount
             int numBuy = updateInternalData();
             //buy sell or hold
