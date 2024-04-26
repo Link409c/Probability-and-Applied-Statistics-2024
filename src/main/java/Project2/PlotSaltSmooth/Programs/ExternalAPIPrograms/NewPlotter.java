@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class NewPlotter extends Plotter {
     /**
-     * creates a function using apache math commons and plots a list
-     * of points using the input and output values, displayed with JFreeChart.
+     * creates a function using apache math commons and creates a list
+     * of points using the input and output values.
      * @param numPoints the number of points to plot.
      */
     public void runProgram(int numPoints){
