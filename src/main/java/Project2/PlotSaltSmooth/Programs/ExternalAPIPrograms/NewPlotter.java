@@ -28,16 +28,27 @@ public class NewPlotter extends Plotter {
             coefficients[i] = r.nextDouble(10);
         }
         PolynomialFunction pf = new PolynomialFunction(coefficients);
+        //set string literal to global variable for identification
+        setTheFunction(pf.toString());
         //evaluate the function for each input value
         for(double d : getInputs()){
             //add the result to the output list
             getOutputPoints().add(new Tuple<>(d, pf.value(d)));
         }
-        //plot using jfreechart
-        //display results using jfreechart
     }
     public NewPlotter(){
         setInputs(new ArrayList<>());
         setOutputPoints(new ArrayList<>());
+        setTheFunction("");
     }
+
+    public String getTheFunction() {
+        return theFunction;
+    }
+
+    public void setTheFunction(String theFunction) {
+        this.theFunction = theFunction;
+    }
+
+    private String theFunction;
 }
