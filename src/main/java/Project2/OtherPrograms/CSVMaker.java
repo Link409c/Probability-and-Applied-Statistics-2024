@@ -39,7 +39,7 @@ public class CSVMaker<E> implements FileAble {
      * @throws IOException if the filepath is invalid or no file exists.
      */
     @Override
-    public E importObjects(String filePath, String header) throws IOException {
+    public void importObjects(String filePath) throws IOException {
         //TODO: add exception handling here
         FileReader fr = new FileReader(filePath);
         BufferedReader bfr = new BufferedReader(fr);
@@ -49,9 +49,7 @@ public class CSVMaker<E> implements FileAble {
         String aLine = bfr.readLine();
         int columns = getColumns(aLine);
         //get the number of global parameters of the structure to import data into
-        int numVariables = getNumVariables();
         //map each parameter to each column value
-        E struct = getData().newInstance();
         //get all points in the .csv file
         String next = bfr.readLine();
         //break up lines into the associated values
@@ -61,7 +59,6 @@ public class CSVMaker<E> implements FileAble {
             //move to next line
             next = bfr.readLine();
         }
-        return struct;
     }
 
     /**
