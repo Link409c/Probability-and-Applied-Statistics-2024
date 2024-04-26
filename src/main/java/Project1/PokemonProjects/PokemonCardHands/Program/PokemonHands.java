@@ -38,7 +38,8 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble, Counta
         filePath = filePath.concat("\\PokemonHandTest");
         filePath = addIdentifier(filePath);
         filePath = addFileType(filePath);
-        return exportObjects(filePath);
+        String header = "Pokemon in Deck,Rate of Success";
+        return exportObjects(filePath, header);
     }
     /**
      * Tests a number of hands to evaluate and calculate the
@@ -199,7 +200,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble, Counta
      * @return a message informing the user if the export was successful.
      */
     @Override
-    public String exportObjects(String filePath) throws IOException {
+    public String exportObjects(String filePath, String header) throws IOException {
         //different ways to approach exporting results
         //can give each hand with cards
         //can give condensed results
@@ -210,7 +211,7 @@ public class PokemonHands implements DeckAnalyzer<PokemonCard>, FileAble, Counta
         FileWriter fr = new FileWriter(filePath);
         BufferedWriter bfr = new BufferedWriter(fr);
         //header
-        bfr.write("Pokemon in Deck,Rate of Success");
+        bfr.write(header);
         bfr.newLine();
         //data
         for(HandResult h : getTheResults()){

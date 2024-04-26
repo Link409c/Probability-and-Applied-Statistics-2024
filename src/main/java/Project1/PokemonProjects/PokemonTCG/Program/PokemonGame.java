@@ -229,7 +229,7 @@ public class PokemonGame implements CardGameEnvironment<PokemonCard, PokemonPlay
     }
 
     @Override
-    public String exportObjects(String filePath) throws IOException {
+    public String exportObjects(String filePath, String header) throws IOException {
         //export a log of the game?
         //deck lists?
         return null;

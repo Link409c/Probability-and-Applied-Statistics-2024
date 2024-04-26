@@ -61,6 +61,21 @@ public class StockAnalyzer implements FileAble {
         }
     }
 
+    @Override
+    public String addFileType(String fileName) {
+        return null;
+    }
+
+    @Override
+    public String addIdentifier(String fileName) {
+        return null;
+    }
+
+    @Override
+    public String exportObjects(String filePath, String header) throws IOException {
+        return null;
+    }
+
     public String exportObjects(String filePath){
         //export the data as a csv
         //per day,
@@ -319,7 +334,7 @@ public class StockAnalyzer implements FileAble {
             //call determineDailyAction method
             int action = determineDailyAction(currDay.getDate());
             //update heuristics (moving avg, RSI, etc) to get buy / sell amount
-            int numBuy = updateInternalData();
+            int numBuy = updateInternalData(currDay.getDate());
             //buy sell or hold
             if(action > 0){
                 buyStock(numBuy, currDay);

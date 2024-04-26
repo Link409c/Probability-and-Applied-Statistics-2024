@@ -42,7 +42,8 @@ public class RareCandyHands extends PokemonHands{
         filePath = filePath.concat("\\RareCandyHandsTest");
         filePath = addIdentifier(filePath);
         filePath = addFileType(filePath);
-        return exportObjects(filePath);
+        String header = "Pokemon in Deck,Rare Candy in Deck,Rate of Success,Rate of Bricks";
+        return exportObjects(filePath, header);
     }
 
     /**
@@ -214,11 +215,11 @@ public class RareCandyHands extends PokemonHands{
     }
 
     @Override
-    public String exportObjects(String filePath) throws IOException {
+    public String exportObjects(String filePath, String header) throws IOException {
         FileWriter fr = new FileWriter(filePath);
         BufferedWriter bfr = new BufferedWriter(fr);
         //header
-        bfr.write("Pokemon in Deck,Rare Candy in Deck,Rate of Success,Rate of Bricks");
+        bfr.write(header);
         bfr.newLine();
         //data
         for(CandyHandResult h : getCandyResults()){

@@ -150,7 +150,7 @@ public class Salter implements FileAble {
     //import the values
     importObjects(filePath);
     //if list is null, throw an exception
-    if(getSaltedPoints() == null || getSaltedPoints().getFirst() == null){
+    if(getSaltedPoints() == null){
       String errMsg = "Imported values list is null.";
       throw new IOException(errMsg);
     }

@@ -153,7 +153,7 @@ public class Smoother implements FileAble {
         //import the values
         importObjects(filePath);
         //if list is null, throw an exception
-        if(getSmoothedPoints() == null || getSmoothedPoints().getFirst() == null){
+        if(getSmoothedPoints() == null){
             String errMsg = "Imported values list is null.";
             throw new IOException(errMsg);
         }
