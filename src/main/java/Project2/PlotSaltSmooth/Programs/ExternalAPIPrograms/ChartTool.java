@@ -59,7 +59,6 @@ public class ChartTool {
      * @param seriesLabels labels for the x and y axis.
      */
     public void runProgram(ArrayList<Tuple<Double>> theData, String chartName, String[] seriesLabels){
-
         //create the window
         JFrame theWindow = makeWindow();
         //create the chart using JFreeChart
