@@ -1,5 +1,6 @@
 package Project2.PlotSaltSmooth.Programs.ExternalAPIPrograms;
 
+import Project2.PlotSaltSmooth.Structures.Tuple;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -13,13 +14,13 @@ import java.util.ArrayList;
 /**
  * Implementation of the JFreeChart Library methods to display a plot of data.
  */
-public class ChartTool<E> {
+public class ChartTool {
 
-    public void createChart(ArrayList<E> inputPoints, ArrayList<E> outputPoints,
-                            String chartName, String[] seriesLabels){
-
-        //create the window
-
+    /**
+     * Creates the JFrame Window to display the chart.
+     * @return the JFrame object with labels, sections and title.
+     */
+    public JFrame makeWindow() {
         //object representing display window
         JFrame window = new JFrame();
         //set the chart title
@@ -30,62 +31,43 @@ public class ChartTool<E> {
         window.setLayout(new BorderLayout());
         //action to close the window when clicking x at top right
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        return window;
+    }
 
-        //create the data display section
+    /**
+     * creates the series collection object to hold each point for plotting on the graph.
+     * @param theData the data to plot
+     * @param seriesName the name of the plotted data series
+     * @return the instantiated XYSeriesCollection object.
+     */
+    public XYSeriesCollection plotData(ArrayList<Tuple<Double>> theData, String seriesName){
+        //create series object to hold data
+        XYSeries series = new XYSeries(seriesName);
+        //add each tuple to the series
+        for(Tuple<Double> t : theData){
+            series.add(t.getInput(), t.getOutput());
+        }
+        //collection object holds series data for charting
+        return new XYSeriesCollection(series);
+    }
 
-        //labels for x and y value of points on mouseover
-        JLabel inputLabel = new JLabel(String.valueOf(getCurrentInput()));
-        JLabel outputLabel = new JLabel(String.valueOf(getCurrentOutput()));
-        //separation of window for data display
-        JPanel legend = new JPanel();
-        //add data display to legend area
-        legend.add(inputLabel);
-        legend.add(outputLabel);
-        //set legend position at bottom
-        window.add(legend, BorderLayout.SOUTH);
+    /**
+     * runs the chart tool, creating the window object, populating a series with the passed data,
+     * and using JFreeChart to create a scatter plot displayed in a JFrame Window.
+     * @param theData inputs and their associated outputs as tuples.
+     * @param chartName the name of the chart
+     * @param seriesLabels labels for the x and y axis.
+     */
+    public void runProgram(ArrayList<Tuple<Double>> theData, String chartName, String[] seriesLabels){
 
-        //create the series and data set objects
-
-        //use passed data points to create series
-        XYSeries y1 = new XYSeries(seriesLabels[1]);
-        XYSeriesCollection data = new XYSeriesCollection(y1);
-
-        //create the chart
-
+        //create the window
+        JFrame theWindow = makeWindow();
         //create the chart using JFreeChart
         JFreeChart theChart = ChartFactory.createScatterPlot(chartName, seriesLabels[0],
-                seriesLabels[1], data);
+                seriesLabels[1], plotData(theData, seriesLabels[1]));
         //add the chart to the middle of the window
-        window.add(new ChartPanel(theChart), BorderLayout.CENTER);
-
-        //plot the data
-
-
+        theWindow.add(new ChartPanel(theChart), BorderLayout.CENTER);
+        //display the window
+        theWindow.setVisible(true);
     }
-
-    public E getCurrentInput() {
-        return currentInput;
-    }
-
-    public void setCurrentInput(E currentInput) {
-        this.currentInput = currentInput;
-    }
-
-    public E getCurrentOutput() {
-        return currentOutput;
-    }
-
-    public void setCurrentOutput(E currentOutput) {
-        this.currentOutput = currentOutput;
-    }
-
-    /**
-     * the x-axis value of a point on the plot.
-     */
-    private E currentInput;
-
-    /**
-     * the y-axis value of a point on the plot.
-     */
-    private E currentOutput;
 }
