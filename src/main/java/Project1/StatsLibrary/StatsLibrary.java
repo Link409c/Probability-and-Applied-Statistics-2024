@@ -615,7 +615,7 @@ public class StatsLibrary{
         //lambda raised to trials times...
         double lambdaRaisedTrials = Math.pow(lambda, trials);
         //euler's number raised to the negative lambda...
-        double eulerRaisedNegLambda = Math.pow(EULERS_NUMBER, Math.negateExact((long) lambda));
+        double eulerRaisedNegLambda = Math.pow(Math.E, Math.negateExact((long) lambda));
         //all over the number of trials factorial
         BigInteger bigTrials = calculateFactorial(trials);
         return (lambdaRaisedTrials * eulerRaisedNegLambda) / bigTrials.longValue();
@@ -658,6 +658,4 @@ public class StatsLibrary{
         //subtract 1/1-k^2 from 1 to get result
         return 1 - (1 / denominator);
     }
-    private static final double EULERS_NUMBER = 2.7182818;
-
 }

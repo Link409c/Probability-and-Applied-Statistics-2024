@@ -64,16 +64,10 @@ public class Salter implements FileAble {
     ArrayList<Tuple<Double>> points = getSaltedPoints();
     Random r = new Random();
     int rand;
-    double saltValue = 0;
-    //get the highest output value as the salt
-    for(Tuple<Double> t : points){
-      if(t.getOutput() > saltValue){
-        saltValue = t.getOutput();
-      }
-    }
     //get each point from the list
     for(Tuple<Double> t : points) {
-      rand = r.nextInt();
+      rand = r.nextInt(1, 3);
+      double saltValue = r.nextDouble(21);
       //check for non null input
       if (saltValue < 0 || saltValue >= 0) {
         //randomly choose negative or positive salt
@@ -169,7 +163,13 @@ public class Salter implements FileAble {
     //export the values
     return exportObjects(filePath, header);
   }
+  public Salter(){
+    setSaltedPoints(new ArrayList<>());
+  }
 
+  public Salter(ArrayList<Tuple<Double>> data){
+    setSaltedPoints(data);
+  }
   public ArrayList<Tuple<Double>> getSaltedPoints() {
     return saltedPoints;
   }

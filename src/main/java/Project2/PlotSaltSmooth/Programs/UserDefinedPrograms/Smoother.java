@@ -172,6 +172,9 @@ public class Smoother implements FileAble {
         //export the values
         return exportObjects(filePath, header);
     }
+    public Smoother(ArrayList<Tuple<Double>> data){
+        setSmoothedPoints(data);
+    }
     public Smoother(){
         setSmoothedPoints(new ArrayList<>());
     }
