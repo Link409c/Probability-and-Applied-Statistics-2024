@@ -18,15 +18,26 @@ public class ChartTool {
 
     /**
      * Creates the JFrame Window to display the chart.
+     * @param windowTitle displayed title in the top bar of the JFrame
+     * @param width the width of the JFrame window in pixels
+     * @param height the height of the JFrame window in pixels
      * @return the JFrame object with labels, sections and title.
      */
-    public JFrame makeWindow() {
+    public JFrame makeWindow(String windowTitle, int width, int height) {
         //object representing display window
         JFrame window = new JFrame();
         //set the chart title
-        window.setTitle("Chart GUI");
+        if(windowTitle == null || windowTitle.isEmpty()) {
+            window.setTitle("JFrame GUI");
+        }else{
+            window.setTitle(windowTitle);
+        }
         //set size
-        window.setSize(800, 600);
+        if(width <= 0 || height <= 0) {
+            window.setSize(800, 600);
+        }else{
+            window.setSize(width, height);
+        }
         //set the frame layout
         window.setLayout(new BorderLayout());
         //action to close the window when clicking x at top right
@@ -60,7 +71,7 @@ public class ChartTool {
      */
     public void runProgram(ArrayList<Tuple<Double>> theData, String chartName, String[] seriesLabels){
         //create the window
-        JFrame theWindow = makeWindow();
+        JFrame theWindow = makeWindow(chartName, 0, 0);
         //create the chart using JFreeChart
         JFreeChart theChart = ChartFactory.createScatterPlot(chartName, seriesLabels[0],
                 seriesLabels[1], plotData(theData, seriesLabels[1]));
