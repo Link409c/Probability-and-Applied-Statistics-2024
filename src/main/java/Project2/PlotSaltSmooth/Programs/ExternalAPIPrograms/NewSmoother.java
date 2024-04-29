@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class NewSmoother extends Smoother {
-    public void runProgram(String filePath, ArrayList<Tuple<Double>> plottedPoints) throws IOException {
+    public void runProgram(String filePath, ArrayList<Tuple<Double>> plottedPoints, int windowSize) throws IOException {
         //if plottedPoints is null,
         if(plottedPoints == null) {
             //if filePath is null or invalid,
@@ -19,9 +19,13 @@ public class NewSmoother extends Smoother {
                 importObjects(filePath);
             }
         }
-        //smooth the data
-        for(Tuple<Double> t : getSmoothedPoints()){
-            //call smoothing function from apache here for each output value
+        //smooth several times to create a cleaner observable trend
+        for(int i = 0; i < windowSize; i++) {
+            //smooth the data
+            smooth(windowSize);
         }
+    }
+    public NewSmoother(ArrayList<Tuple<Double>> data){
+        super(data);
     }
 }

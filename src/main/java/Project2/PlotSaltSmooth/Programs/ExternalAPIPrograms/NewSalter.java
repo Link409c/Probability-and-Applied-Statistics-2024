@@ -21,8 +21,10 @@ public class NewSalter extends Salter {
             }
         }
         //salt
-        for(Tuple<Double> t : getSaltedPoints()){
-            //call salting function from apache here for each output value
-        }
+        salt();
+    }
+
+    public NewSalter(ArrayList<Tuple<Double>> plottedPoints){
+        super(plottedPoints);
     }
 }
