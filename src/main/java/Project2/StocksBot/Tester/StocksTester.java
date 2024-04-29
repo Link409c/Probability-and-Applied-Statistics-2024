@@ -10,7 +10,8 @@ public class StocksTester {
         //test import
         StockAnalyzer stockAnalyzer = new StockAnalyzer();
         try{
-            stockAnalyzer.importObjects("MSFT.csv");
+            stockAnalyzer.importObjects("E:\\Coding Projects\\Probability-and-Applied-Statistics-2024" +
+                    "\\src\\main\\java\\Project2\\StocksBot\\Files\\MSFT.csv");
         }catch (IOException i){
             i.printStackTrace();
         }
@@ -19,7 +20,7 @@ public class StocksTester {
         System.out.println("Date | Open | High | Low | Close | Adj Close | Volume");
         System.out.println(aDay.dailyValuesToString());
         //test buying and selling
-        System.out.println(stockAnalyzer.runProgram(stockAnalyzer.getMyMoney().doubleValue()));
+        System.out.println(stockAnalyzer.runProgram(stockAnalyzer.getMyMoney().doubleValue() / 2));
         //test export
     }
 }
