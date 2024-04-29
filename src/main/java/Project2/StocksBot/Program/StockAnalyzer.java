@@ -112,20 +112,29 @@ public class StockAnalyzer implements FileAble {
      * @return positive to buy, zero to hold, negative to sell.
      */
     public int determineDailyAction(String aDate){
-        int action = 0;
         //basic without RSI or more values
         //based on day to day
         //get the moving average of the close
-        //compare it to previous days close
-        //if close is higher sell
-        //if close is lower buy
+        int dateIndex = findDay(aDate);
+        if(dateIndex > 5){
+            double avgValue = movingAverage(4, dateIndex, 5);
+            //compare it to previous days close
+            double prevClose = getDaysData().get(dateIndex - 1).getClose();
+            //if close is higher sell
+            if (avgValue > prevClose) {
+                return -1;
+            }
+            //if close is lower buy
+            else if (avgValue < prevClose) {
+                return 1;
+            }
+        }
         //if close is within a value dont do anything
-        action = updateInternalData(aDate);
         //with RSI
         //if more up moves than down moves over a range,
         //if RSI is in a certain range,
         //couple this with moving average
-        return action;
+        return 0;
     }
 
     /**
@@ -158,8 +167,8 @@ public class StockAnalyzer implements FileAble {
                         case 5 -> avg += aDay.getAdjustedClose();
                     }
                 }
-                //get average of values around that point
-                avg /= window ;
+            //get average of values around that point
+            avg /= window;
             }
         return avg;
     }
@@ -217,27 +226,40 @@ public class StockAnalyzer implements FileAble {
      * dependent on changes in averages of whatever value is being monitored.
      */
     public int updateInternalData(String date){
-        int action = 0;
-        //updating central tendency
-        //get average price (Low + High + Open + Close / 4) today
-        //compare to average of the last week?
-        //today > average, return -1 (sell)
-        //today = average, return 0 (hold)
-        //today < average, return 1 (buy)
+        StockDay today = getDaysData().get(findDay(date));
         //updating RSI
         //if date < 14, can't run rsi
+        if(getDaysData().indexOf(today) < 14){
+            return 0;
+        }
         //else,
-        //RSI < 30, return 1 (buy)
-        //31 <= RSI <= 69, return 0 (hold)
-        //RSI >= 70, return -1 (sell)
-        /*
-         What probability calculations can be applied here?
-         Get probability of an up move so far
-         Apply binomial distribution for prob of n up moves in the next y days
-         y = 365 - current day of year?
-         n = average number of up moves so far
-         */
-        return action;
+        else {
+            double numMove = calculateRSI(date);
+            //RSI < 30, buy
+            if(numMove < 30){
+                numMove = 10;
+            }
+            //31 <= RSI <= 69, hold
+            else if(numMove >= 31 && numMove <= 69){
+                numMove = 0;
+            }
+            //RSI >= 70, sell
+            else{
+                numMove = 10;
+            }
+            return (int) numMove;
+        }
+    }
+
+    public int findDay(String date){
+        int indexOfDate = 0;
+        for(StockDay day : getDaysData()){
+            if(day.getDate().equals(date)){
+                indexOfDate = getDaysData().indexOf(day);
+                break;
+            }
+        }
+        return indexOfDate;
     }
 
     /**
@@ -252,13 +274,7 @@ public class StockAnalyzer implements FileAble {
         //make list to hold move data
         ArrayList<Tuple<Double>> moves = new ArrayList<>(daysData.size());
         //get the index of the day with the passed date
-        int indexOfDate = 0;
-        for(StockDay day : daysCopy){
-            if(day.getDate().equals(date)){
-                indexOfDate = daysCopy.indexOf(day);
-                break;
-            }
-        }
+        int indexOfDate = findDay(date);
         //check that date is at least 14 days since start of data
         if(indexOfDate < 14){
             String errMsg = "Date must be at least 14 days since the start of the data.";
@@ -271,10 +287,17 @@ public class StockAnalyzer implements FileAble {
             while(start < indexOfDate) {
                 //get the difference between close and prev close
                 double prevDayClose = daysCopy.get(start).getClose();
-                double prevMinusOneDayClose = daysCopy.get(start-1).getClose();
+                double prevMinusOneDayClose;
+                if(start-1 >= 0) {
+                    prevMinusOneDayClose = daysCopy.get(start - 1).getClose();
+                }
+                else{
+                    prevMinusOneDayClose = 0;
+                }
                 double closeDiff = prevDayClose - prevMinusOneDayClose;
                 moves.add(new Tuple<>((double) start, closeDiff));
                 start++;
+
             }
             //average up and down moves
             //3 methods
