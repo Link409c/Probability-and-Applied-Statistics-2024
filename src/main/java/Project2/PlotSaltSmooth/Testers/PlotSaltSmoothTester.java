@@ -14,6 +14,8 @@ public class PlotSaltSmoothTester {
 
     /**
      * add the filename to a directory along with any known identifier and the file type.
+     * used specifically in the tester to get accurate file paths for input data created
+     * from plotting and salting.
      * @param fileName name of the file
      * @param filePath directory of the file
      * @return the properly formatted absolute filepath
@@ -26,13 +28,15 @@ public class PlotSaltSmoothTester {
 
     public static void main(String[] args) {
         Plotter plotter = new Plotter();
-        String filePath = "E:\\Coding Projects\\Probability-and-Applied-Statistics-2024\\" +
-                "src\\Project2\\PlotSaltSmooth\\Results";
-        int numPoints = 5001;
+        String filePath = "E:\\Coding Projects\\Probability-and-Applied-Statistics-2024\\src\\main" +
+                "\\java\\Project2\\PlotSaltSmooth\\Results\\OutputFiles";
+        //change this value to represent the size of the dataset
+        int numPoints = 501;
         try {
             System.out.println(plotter.runProgram(filePath, numPoints));
         }catch(IOException i){
             i.printStackTrace();
+            System.exit(-1);
         }
         //import from plotter output file
         Salter salter = new Salter();
@@ -58,6 +62,7 @@ public class PlotSaltSmoothTester {
         for(Tuple<Double> t : smoother.getSmoothedPoints()){
             System.out.println(t.getInput() + ", " + t.getOutput());
         }*/
+        //change this value to determine the area to calculate an average around a point
         int window = 10;
         //run smoother
         try{
