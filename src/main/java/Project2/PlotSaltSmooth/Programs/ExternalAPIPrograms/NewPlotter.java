@@ -20,22 +20,45 @@ public class NewPlotter extends Plotter {
         if(this.getInputs().isEmpty()){
             for(int i = 0; i < numPoints; i++){
                 getInputs().add(r.nextDouble(5));
+                }
             }
-        }
         //create polynomial using math commons
-        double[] coefficients = new double[2];
-        for(int i = 0; i < 1; i++){
-            coefficients[i] = r.nextDouble(10);
-        }
-        PolynomialFunction pf = new PolynomialFunction(coefficients);
+        PolynomialFunction pf = new PolynomialFunction(makeCoefficients(r));
         //set string literal to global variable for identification
         setTheFunction(pf.toString());
+        setTheFunction(getTheFunction());
         //evaluate the function for each input value
         for(double d : getInputs()){
             //add the result to the output list
             getOutputPoints().add(new Tuple<>(d, pf.value(d)));
         }
     }
+
+    /**
+     * create coefficients with 2 significant figures for use in initializing polynomial.
+     * @param random the random object used in generating values
+     * @return an array of double values.
+     */
+    public double[] makeCoefficients(Random random){
+        //array to return
+        //number of coefficients determines degree of polynomial
+        double[] coefficients = new double[3];
+        //create values
+        for(int i = 0; i < 3; i++){
+            //value before decimal
+            int theInput = random.nextInt(-5,6);
+            String units = ".";
+            //2 significant digits after decimal
+            for(int j = 0; j < 2; j++){
+                int sigUnit = random.nextInt(10);
+                units = units.concat(String.valueOf(sigUnit));
+            }
+            units = theInput + units;
+            coefficients[i] = Double.parseDouble(units);
+        }
+        return coefficients;
+    }
+
     public NewPlotter(){
         setInputs(new ArrayList<>());
         setOutputPoints(new ArrayList<>());
@@ -50,5 +73,8 @@ public class NewPlotter extends Plotter {
         this.theFunction = theFunction;
     }
 
+    /**
+     * String representation of the function generated using Apache.
+     */
     private String theFunction;
 }
