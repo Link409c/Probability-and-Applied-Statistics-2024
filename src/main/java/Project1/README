@@ -1,0 +1,22 @@
+This folder consists of all Projects and Work submitted for Project 1, the Midterm.
+
+The interfaces and abstracts folder contains interfaces which programs
+within the repository implement in different ways. Reference these interfaces
+to gain a base understanding of the functions of each program which implements them.
+
+Each separate program is housed within its own folder.
+
+Pokemon Projects contains both the Pokemon TCG Emulation Project, and two "Monte Carlo"
+Pokemon Hand Drawing Projects.
+
+Set Operations is a simple program showcasing basic logical set operations on sets of elements.
+
+Stats Library is a program which models many differing types of probability distributions for both
+discrete random variables and given probabilities.
+
+Written Work contains a formula sheet, as well as a writeup on uses of the Github Version Control System.
+
+This writeup is supplemented by screenshots of the process to rebase a cloned repository using a specific commit.
+
+See the contents of each package for further breakdown of the data structures, programs, tests,
+and documented results of each program.
