@@ -1,0 +1,70 @@
+Rarity,Item,Total,,,
+,Chests Sample,33415,,,
+"Left
+Common",B.L. Stattuette (x2-4),2515,Mean,Variance,
+,Dye Kit,15026,4773.571429,22224421.62,
+,Metabolic Primer (red),1822,Median,Std Dev,
+,Revive Orb,4886,2515,4714.278483,
+,Transmutation Charges (5x),4943,Mode,,
+,Upgrade Extractor,2433,Dye Kit,,
+,Utility Primer (blue),1790,,,
+"Right 
+Common",B.L.Claim Ticket Scrap,5252,Mean,Variance,
+,B.L. Commemorative Coin,1502,2784.583333,1587988.629,
+,B.L. Lockbreaker Kit,1574,Median,Std Dev,
+,B.L.Material Bag: Bjora Marches,3176,2700,1260.154208,
+,B.L. Miniature Claim Ticket,2710,Mode,,
+,Armor Unlock (Blue),1543,B.L.Claim Ticket Scrap,,
+,Wardrobe Unlock (Gold),2690,,,
+,Weapon Unlock (Brown),1686,,,
+,Heavy Crafting Bag (x2) (T6),3763,,,
+,Large Crafting Bag (x2) (T5),3679,,,
+,Teleport to Friend,4254,,,
+,Tyrian Exchange Voucher,1586,,,
+,,,,,
+Extra Drop Chance,,3325,,,
+Exclusive,,,,,
+,,,,,
+,,,,,
+Non-Exclusives Loot Table,,2763,,Uncommon,1951
+Uncommon,Black Lion Claim Ticket,325,,Rare,795
+,Vintage Black Lion Weapon Box,~,,Super Rare,17
+,Uncommon Weapon Skin,1577,,Exclusive,562
+TOTAL,,1951,,,
+Rare,Golden Black Lion Chest Key (x3),23,,Golden Black Lion Chest Key (x3),23
+,Black Lion Stattuette (x25),30,,Black Lion Stattuette (x25),30
+,Rare Weapon Skin,461,,Rare Weapon Skin,461
+,Rare Axe Skin,32,,Glyph,87.0
+,Rare Dagger Skin,26,,Node,153
+,Rare Focus Skin,29,,Tonic,41
+,Rare Greatsword Skin,30,,Super Rare/Contract,17
+,Rare Hammer Skin,35,,,
+,Rare Longbow Skin,31,,,
+,Rare Mace Skin,32,,,
+,Rare Pistol Skin,28,,,
+,Rare Rifle Skin,19,,,
+,Rare Scepter Skin,31,,,
+,Rare Shield Skin,30,,,
+,Rare Short Bow Skin,28,,,
+,Rare Staff Skin,27,,,
+,Rare Sword Skin,33,,,
+,Rare Torch Skin,24,,,
+,Rare Warhorn Skin,26,,,
+,Rare Skin Avg.,28.8,,,
+,Glyph #1,49,,,
+,Glyph #2,38,,,
+,Glyph,87.0,,,
+,Node #1,49,,,
+,Node #2,42,,,
+,Node #3,37,,,
+,Node #4,25,,,
+,Node,153.0,,,
+,Tonic,41,,,
+TOTAL,Rare,795,,,
+Super Rare,Endless Repair Contract,1,,,
+,Endless Upgrade Extractor Contract,3,,,
+,Permanent Bank Access Contract,4,,,
+,Permanent Black Lion Merchant Contract,6,,,
+,Permanent Hair Stylist Contract,0,,,
+,Permanent Trading Post Express Contract,3,,,
+TOTAL,Super Rare/Contract,17,,,
