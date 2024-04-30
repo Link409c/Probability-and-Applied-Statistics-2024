@@ -1,11 +1,9 @@
 package Project2.OtherPrograms;
 
 import Project1.InterfacesAbstracts.FileAble;
-import Project2.PlotSaltSmooth.Structures.Tuple;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class CSVMaker<E> implements FileAble {
 
