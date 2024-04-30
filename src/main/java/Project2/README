@@ -11,8 +11,14 @@ obscure the data, and then smoothing the data using averages to attempt to recog
 Includes two sets of programs and their respective analyses: Programs written by the student, as well as programs
 implementing the external libraries Apache Math Commons and JFreeChart. The external libraries offer the functions
 the student coded in their own programs as well as the ability to display graphed data without export to another file
-or program, such as excel.
+or program, such as excel. Finally, a third analysis is included of the use of GNU Octave for Plotting, Salting, and
+Smoothing.
+
+Stats Library: Extending the original Stats Library from the Midterm Project, this program covers the final few
+distributions we learned in the second half of the course - Poisson Distribution, and Tchebysheff's Theorem.
 
 StocksBot: A program designed to examine the trends in historical data of a stock and make decisions to buy, sell,
 or some other actions. Includes the program, its results and a discussion. Stocks data used in testing is included in
 the Files directory.
+
+Written Work: Similar to Project 1, Written Work contains a Formula Sheet covering all chapters after the Midterm.
