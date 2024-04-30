@@ -1,24 +1,13 @@
 This repository is dedicated to ongoing coursework for Probability and Applied Statistics, Spring 2024.
 
-Projects are separated into Parent folders. Project 1 is all assignments submitted for the Midterm.
+As the project contains Maven Dependencies, make sure that your IDE supports Maven if cloning the repository.
 
-The interfaces and abstracts folder contains interfaces which programs
-within the repository implement in different ways. Reference these interfaces
-to gain a base understanding of the functions of each program which implements them.
+Projects are separated into Parent folders. Navigate to src/main/java for all subdirectories.
 
-Each separate program is housed within its own folder.
+Project 1 is all assignments submitted for the Midterm.
 
-Pokemon Projects contains both the Pokemon TCG Emulation Project, and two "Monte Carlo"
-Pokemon Hand Drawing Projects.
+Project 2 is all assignments submitted for the Final Project.
 
-Set Operations is a simple program showcasing basic logical set operations on sets of elements.
+Refer to each subdirectory for a Readme detailing each project, program, or report.
 
-Stats Library is a program which models many differing types of probability distributions for both
-discrete random variables and given probabilities.
-
-Written Work contains a formula sheet, as well as a writeup on uses of the Github Version Control System.
-
-This writeup is supplemented by screenshots of the process to rebase a cloned repository using a specific commit.
-
-See the contents of each package for further breakdown of the data structures, programs, tests,
-and documented results of each program.
+All work within this repository is the work of the author. Please cite any code used accordingly.
